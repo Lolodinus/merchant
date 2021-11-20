@@ -1,0 +1,66 @@
+@import "../../shareStyle/palette";
+
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.traders {
+    height: 100%;
+    flex: 1 0 20%;
+
+    .traders__container {
+        height: 100%;
+        padding: 0 10px;
+
+        .traders__row {
+            height: 100%;
+            border: 10px solid $accent-color;
+            display: flex;
+            flex-direction: column;
+
+            .traders__header {
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $accent-color;
+
+                font-size: 28px;
+                color: $primary-color-text;
+            }
+            .traders__list {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                background-color: $primary-color;
+
+                .traders__item {
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    flex-grow: 1;
+                    border-top: 5px solid $accent-color;
+                    border-bottom: 5px solid $accent-color;
+                    cursor: pointer;
+
+                    .traders__avatar {
+                        height: 100px;
+                        width: 100px;
+                        border-radius: 50%;
+                        margin: 10px auto;
+                        background-color: $accent-color;
+                    }
+                    .traders__title {
+                        font-size: 24px;
+                        color: #000;
+                    }
+                }
+            }
+
+        }
+    }
+}
