@@ -1,0 +1,19 @@
+@import "../shareStyle/palette";
+@import "../shareStyle/fonts";
+
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, div[id=root] {
+  height: 100%;
+  font-family: "Cyrillic Pixel-7 Regular";
+};
+
+.App {
+  height: 100%;
+  display: flex;
+  text-align: center;
+  background-color: rgba($primary-color-dark, .3);
+};

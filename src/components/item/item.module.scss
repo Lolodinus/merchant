@@ -1,0 +1,63 @@
+@import "../../shareStyle/palette";
+
+.item {
+    flex: 1 0 20%;
+    .item__container {
+        display: block;
+        min-height: 200px;
+        height: auto;
+        margin: 20px;
+        padding: 20px;
+        background-color: $primary-color-text;
+        align-self: start;
+    
+        box-shadow: -10px 0 0 0 $primary-color-dark,
+                    10px 0 0 0 $primary-color-dark,
+                    0 -10px 0 0 $primary-color-dark,
+                    0 10px 0 0 $primary-color-dark;
+        
+        .item__title {
+            margin-top: -10px;
+            padding: 0 10px 10px 10px;
+            font-size: 20px;
+            color: $primary-color;
+        };
+        .item__img {
+            height: 80px;
+            margin: 0 -20px 0 -20px;
+            background-image: url("https://cdn2.scratch.mit.edu/get_image/gallery/26814265_200x130.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+        };
+        .item__price {
+            padding: 10px;
+            font-size: 24px;
+            color: $primary-color;
+        };
+        .item__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 70%;
+            margin: 0 auto;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 20px;
+            color: $primary-text-color;
+            border: 10px solid $accent-color;
+            
+            &:hover,
+            &:focus {
+                background-color: $accent-color;
+                color: $primary-color-text;
+            };
+            &:active {
+                transform: scale(.95);
+            }
+        }
+    }
+
+}
