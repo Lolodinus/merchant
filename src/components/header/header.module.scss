@@ -1,0 +1,34 @@
+@import "../../shareStyle/palette";
+
+
+.header {
+    height: 60px;
+    background-color: $primary-color-dark;
+
+    .header__container {
+        height: 100%;
+        max-width: 1280px;
+        margin: auto;
+        padding: 0 15px;
+
+        .header_row {
+            height: 100%;
+            display: flex;
+
+            .header_left {
+                flex-basis: 40%;
+            };
+            .header_center {
+                flex: 1 0 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                font-size: 45px;
+            };
+            .header_right {
+                flex-basis: 40%;
+            };
+        }
+    }
+}
