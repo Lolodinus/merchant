@@ -57,6 +57,60 @@ h2 {
                     .traders__title {
                         font-size: 24px;
                         color: #000;
+                    };
+                    .traders__actions {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .traders__actions-buy {
+                            height: 40px;
+                            width: 80px;
+                            margin: 0 10px;
+                            border: none;
+
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            font-family: inherit;
+                            font-size: 20px;
+                            color: $primary-color-text;
+                            background-color: $accent-color;
+
+                            &:hover,
+                            &:focus {
+                                border: 5px solid $accent-color;
+                                background-color: $primary-color-text;
+                                color: $accent-color;
+                            };
+                            &:active {
+                                transform: scale(.95);
+                            };
+                        };
+                        .traders__actions-sell {
+                            height: 40px;
+                            width: 80px;
+                            margin: 0 10px;
+                            border: none;
+
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            font-family: inherit;
+                            font-size: 20px;
+                            color: $accent-color;
+
+                            &:hover,
+                            &:focus {
+                                background-color: $accent-color;
+                                color: $primary-color-text;
+                            };
+                            &:active {
+                                transform: scale(.95);
+                            };
+                        }
                     }
                 }
             }

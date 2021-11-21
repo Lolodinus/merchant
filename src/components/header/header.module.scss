@@ -16,7 +16,58 @@
             display: flex;
 
             .header_left {
+                display: flex;
                 flex-basis: 40%;
+
+                .header__days {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+
+                    font-size: 20px;
+                    color: $primary-color-text;
+
+                    .header__days-icon {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                        display: block;
+                        background-image: url("./icon/days_white.png");
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+
+                        &._active {
+                            background-image: url("./icon/days_active.png");
+                        }
+                    }
+                }
+                .header__money {
+                    height: 100%;
+                    margin-left: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+
+                    font-size: 20px;
+                    color: $primary-color-text;
+
+                    .header__money-icon {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                        display: block;
+                        background-image: url("./icon/money_white.png");
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+
+                        &._active {
+                            background-image: url("./icon/money_active.png");
+                        }
+                    }
+                }
             };
             .header_center {
                 flex: 1 0 20%;
@@ -28,6 +79,31 @@
             };
             .header_right {
                 flex-basis: 40%;
+
+                .header__bag {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: end;
+
+                    font-size: 20px;
+                    color: $primary-color-text;
+
+                    .header__bag-icon {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                        display: block;
+                        background-image: url("./icon/backpack_white.png");
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+
+                        &._active {
+                            background-image: url("./icon/backpack_active.png");
+                        }
+                    }
+                }
             };
         }
     }
