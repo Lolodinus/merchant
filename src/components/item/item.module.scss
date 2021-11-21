@@ -7,7 +7,7 @@
         min-height: 200px;
         height: auto;
         margin: 20px;
-        padding: 20px;
+        padding: 10px;
         background-color: $primary-color-text;
         align-self: start;
     
@@ -47,7 +47,7 @@
             font-family: inherit;
             font-size: 20px;
             color: $primary-text-color;
-            border: 10px solid $accent-color;
+            border: 5px solid $accent-color;
             
             &:hover,
             &:focus {

@@ -76,6 +76,12 @@
                 align-items: center;
 
                 font-size: 45px;
+                color: $primary-color-text;
+
+                .header_logo-link {
+                    text-decoration: none;
+                    color: inherit;
+                }
             };
             .header_right {
                 flex-basis: 40%;

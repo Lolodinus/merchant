@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { links } from "../../const/pageLinks"
 
 import style from "./header.module.scss";
 
@@ -18,7 +21,11 @@ export const Header = () => {
                             20
                         </div>
                     </div>
-                    <div className={ style.header_center }>Merchant</div>
+                    <div className={ style.header_center }>
+                        <Link className={ style["header_logo-link"] } to={ links.main }>
+                            Merchant
+                        </Link>
+                    </div>
                     <div className={ style.header_right }>
                         <div className={ style.header__bag }>
                             <span className={ style["header__bag-icon"] }/>

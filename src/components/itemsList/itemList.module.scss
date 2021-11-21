@@ -13,7 +13,8 @@ h3 {
 
 .items-list {
     width: 100%;
+    margin: 0 -10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
