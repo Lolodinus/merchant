@@ -1,38 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Item } from "../item";
+import { getAllWeaponsFromFirestore } from "../../services/firebase";
 
 import style from "./itemList.module.scss";
 
 
 export const ItemsList = () => {
 
-    // const itemRender = () => {
-    //     let items = [];
-    //     for(let i = 0; i < 10; i++) {
-    //         items.push(i+1);
-    //     }
-    //     items.map(item => {
-    //         return (
-    //             <li className={ style.item } key={ item }>
-    //                 item
-    //             </li>
-    //         )
-    //     })
-    // }
+    const [items, setItems] = useState("");
+
+    useEffect(() => {
+        getAllWeaponsFromFirestore()
+            .then((items) => {
+                setItems(items)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, [])
 
     return (
         <ul className={ style["items-list"] }>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
+            {   
+                items && items.length > 0
+                ? items.map(item => {
+                    return <Item item={item} key={item.id}/>
+                })
+                : null
+            }
         </ul>
     )
 }

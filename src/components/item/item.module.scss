@@ -25,11 +25,12 @@
         .item__img {
             height: 80px;
             margin: 0 -20px 0 -20px;
-            background-image: url("https://cdn2.scratch.mit.edu/get_image/gallery/26814265_200x130.png");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
+            img {
+                height: 100%;
+                width: 100%;
+                display: block;
+                object-fit: contain;
+            }
         };
         .item__price {
             padding: 10px;
