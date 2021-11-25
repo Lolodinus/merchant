@@ -57,8 +57,8 @@ const _setRandomFieldOnFirestoreDB = (records) => {
 }
 
 
-export const getAllWeaponsFromFirestore = async() => {
-    const weaponsFromDB = await _getRandomDocFromFirebaseDB("items", 10);
+export const getAllWeaponsFromFirestore = async(quality) => {
+    const weaponsFromDB = await _getRandomDocFromFirebaseDB("items", quality);
     const weapon = await _transformWeaponsData(weaponsFromDB);
     _setRandomFieldOnFirestoreDB(weapon);
     return weapon

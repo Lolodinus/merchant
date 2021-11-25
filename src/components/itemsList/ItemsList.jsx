@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Item } from "../item";
-import { getAllWeaponsFromFirestore } from "../../services/firebase";
+import { shopItemsActions } from "../../store/shopItems";
 
 import style from "./itemList.module.scss";
 
 
 export const ItemsList = () => {
 
-    const [items, setItems] = useState("");
+    const dispatch = useDispatch();
+    const { items, loading, error } = useSelector((store) => store.items);
 
     useEffect(() => {
-        getAllWeaponsFromFirestore()
-            .then((items) => {
-                setItems(items)
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        dispatch(shopItemsActions.fetchItems(10));
     }, [])
 
     return (
