@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { links } from "../../const/pageLinks"
+import { links } from "../../const/pageLinks";
 
 import style from "./header.module.scss";
 
 
 export const Header = () => {
+
+    const { bagItemsCount } = useSelector((store) => store.bag);
+
     return (
         <header className={ style.header }>
             <div className={ style.header__container }>
@@ -27,9 +31,11 @@ export const Header = () => {
                         </Link>
                     </div>
                     <div className={ style.header_right }>
-                        <div className={ style.header__bag }>
-                            <span className={ style["header__bag-icon"] }/>
-                            0/10
+                        <div className={ `${ style.header__bag } ${ style.bag}` }>
+                            <Link className={ style.bag__link } to={ links.bag }>
+                                <span className={ style.bag__icon }/>
+                                { bagItemsCount }/10
+                            </Link>
                         </div>
                     </div>
                 </div>

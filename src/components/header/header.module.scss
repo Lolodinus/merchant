@@ -1,6 +1,11 @@
 @import "../../shareStyle/palette";
 
 
+a {
+    font-family: inherit;
+    text-decoration: none;
+}
+
 .header {
     height: 60px;
     background-color: $primary-color-dark;
@@ -88,29 +93,36 @@
 
                 .header__bag {
                     height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: end;
-
-                    font-size: 20px;
-                    color: $primary-color-text;
-
-                    .header__bag-icon {
-                        width: 30px;
-                        height: 30px;
-                        margin-right: 5px;
-                        display: block;
-                        background-image: url("./icon/backpack_white.png");
-                        background-size: contain;
-                        background-position: center;
-                        background-repeat: no-repeat;
-
-                        &._active {
-                            background-image: url("./icon/backpack_active.png");
-                        }
-                    }
+                    margin-left: auto;
                 }
             };
+        }
+    }
+}
+
+.bag {
+    .bag__link {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+        font-size: 20px;
+        color: $primary-color-text;
+
+        .bag__icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            display: block;
+            background-image: url("./icon/backpack_white.png");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            &._active {
+                background-image: url("./icon/backpack_active.png");
+            }
         }
     }
 }

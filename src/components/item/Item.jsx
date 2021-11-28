@@ -3,8 +3,8 @@ import React from "react";
 import style from "./item.module.scss";
 
 
-export const Item = ({item}) => {
-    const { title, imgURL, price } = item;
+export const Item = ({item, addItem}) => {
+    const { id, title, imgURL, price } = item;
     return (
         <div className={ style.item }>
             <div  className={ style.item__container }>
@@ -17,7 +17,17 @@ export const Item = ({item}) => {
                 <div className={ style.item__price }>
                     { price ? price : 0 }
                 </div>
-                <button type="button" className={style.item__btn}>Buy</button>
+                <button 
+                    type="button"
+                    className={style.item__btn}
+                    onClick={ () => addItem({
+                        id,
+                        title,
+                        imgURL,
+                    }) }
+                >
+                    Buy
+                </button>
             </div>
         </div>
     )
