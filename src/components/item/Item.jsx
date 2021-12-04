@@ -12,7 +12,7 @@ export const Item = ({item, addItem}) => {
                     { title ? title : "Item" }
                 </h3>
                 <div className={ style.item__img }>
-                    <img src={imgURL} alt={imgURL} />
+                    <img src={imgURL} alt={title} />
                 </div>
                 <div className={ style.item__price }>
                     { price ? price : 0 }

@@ -1,4 +1,4 @@
-import { getAllWeaponsFromFirestore } from "../../services/firebase";
+import { setItemsToTraders } from "../../services/firebase";
 
 
 export const shopItemsActionTypes = {
@@ -12,10 +12,10 @@ export const shopItemsActions = {
     itemsSuccess: (payload) => ({type: shopItemsActionTypes.ITEMS_SUCCESS, payload}),
     itemsFail: (error) => ({type: shopItemsActionTypes.ITEMS_FAIL, payload: error}),
 
-    fetchItems: (quality) => async (dispatch) => {
+    fetchItems: (quality, traders) => async (dispatch) => {
         try {
             dispatch(shopItemsActions.itemsRequest());
-            const items = await getAllWeaponsFromFirestore(quality);
+            const items = await setItemsToTraders(quality, traders);
             dispatch(shopItemsActions.itemsSuccess(items));
         } catch(error) {
             dispatch(shopItemsActions.itemsFail(error.message));

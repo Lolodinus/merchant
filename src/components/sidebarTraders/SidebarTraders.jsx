@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Trader } from "../../components/trader";
+import { tradersActions } from "../../store/traders";
 
 import style from "./sidebarTraders.module.scss";
 
 
 export const SidebarTraders = () => {
+    const dispatch = useDispatch();
+    const { traders } = useSelector((store) => store.traders);
+
+    useEffect(() => {
+        if (traders.length <= 0) {
+            dispatch(tradersActions.fetchTraders(3));
+        }
+        // eslint-disable-next-line
+    }, [])
+
+    const selectTrader = (id) => {
+        dispatch(tradersActions.setActiveTrader(id));        
+    }
+
     return (
         <section className={ style.traders }>
             <div className={ style.traders__container }>
@@ -12,33 +30,17 @@ export const SidebarTraders = () => {
                         Traders
                     </h2>
                     <div className={ style.traders__list }>
-                        <div className={ style.traders__item }>
-                            <div className={ style.traders__avatar }></div>
-                            <h3 className={ style.traders__title }> Trader </h3>
-                            <p className={ style.traders__discription }></p>
-                            <div className={ style.traders__actions }>
-                                <button className={ style["traders__actions-buy"] }>Byu</button>
-                                <button className={ style["traders__actions-sell"] }>Sell</button>
-                            </div>
-                        </div>
-                        <div className={ style.traders__item }>
-                            <div className={ style.traders__avatar }></div>
-                            <h3 className={ style.traders__title }> Trader </h3>
-                            <p  className={ style.traders__discription }></p>
-                            <div className={ style.traders__actions }>
-                                <button className={ style["traders__actions-buy"] }>Byu</button>
-                                <button className={ style["traders__actions-sell"] }>Sell</button>
-                            </div>
-                        </div>
-                        <div className={ style.traders__item }>
-                            <div className={ style.traders__avatar }></div>
-                            <h3 className={ style.traders__title }> Trader </h3>
-                            <p  className={ style.traders__discription }></p>
-                            <div className={ style.traders__actions }>
-                                <button className={ style["traders__actions-buy"] }>Byu</button>
-                                <button className={ style["traders__actions-sell"] }>Sell</button>
-                            </div>
-                        </div>
+                        {
+                            traders && traders.length > 0
+                                ? traders.map(trader => {
+                                    return <Trader 
+                                                trader={trader}
+                                                selectTrader={selectTrader}
+                                                key={trader.id}
+                                            />
+                                })
+                                : null
+                        }
                     </div>
                 </div>
             </div>

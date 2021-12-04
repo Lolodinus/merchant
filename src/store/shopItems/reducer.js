@@ -19,7 +19,7 @@ export const itemsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: action.payload,
-                loading: false
+                loading: false,
             };
         case shopItemsActionTypes.ITEMS_FAIL:
             return {

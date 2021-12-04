@@ -8,7 +8,8 @@ h2 {
 
 .traders {
     height: 100%;
-    flex: 1 0 20%;
+    width: 250px;
+    margin-left: auto;
     padding-left: 10px;
 
     .traders__container {
@@ -34,85 +35,7 @@ h2 {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
-                background-color: $primary-color;
-
-                .traders__item {
-                    height: auto;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    flex-grow: 1;
-                    border-top: 5px solid $accent-color;
-                    border-bottom: 5px solid $accent-color;
-                    cursor: pointer;
-
-                    .traders__avatar {
-                        height: 100px;
-                        width: 100px;
-                        border-radius: 50%;
-                        margin: 10px auto;
-                        background-color: $accent-color;
-                    }
-                    .traders__title {
-                        font-size: 24px;
-                        color: #000;
-                    };
-                    .traders__actions {
-                        width: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        .traders__actions-buy {
-                            height: 40px;
-                            width: 80px;
-                            margin: 0 10px;
-                            border: none;
-
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-
-                            font-family: inherit;
-                            font-size: 20px;
-                            color: $primary-color-text;
-                            background-color: $accent-color;
-
-                            &:hover,
-                            &:focus {
-                                border: 5px solid $accent-color;
-                                background-color: $primary-color-text;
-                                color: $accent-color;
-                            };
-                            &:active {
-                                transform: scale(.95);
-                            };
-                        };
-                        .traders__actions-sell {
-                            height: 40px;
-                            width: 80px;
-                            margin: 0 10px;
-                            border: none;
-
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-
-                            font-family: inherit;
-                            font-size: 20px;
-                            color: $accent-color;
-
-                            &:hover,
-                            &:focus {
-                                background-color: $accent-color;
-                                color: $primary-color-text;
-                            };
-                            &:active {
-                                transform: scale(.95);
-                            };
-                        }
-                    }
-                }
+                background: rgba($primary-color, .5);
             }
 
         }

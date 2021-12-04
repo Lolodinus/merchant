@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { bagActions } from "../../store/bag";
@@ -11,12 +11,13 @@ import style from "./bag.module.scss";
 export const Bag = () => {
 
     const dispatch = useDispatch();
-    const { bagItems, loading, error } = useSelector((store) => store.bag);
+    const { bagItems } = useSelector((store) => store.bag);
 
     useEffect(() => {
         if (bagItems && bagItems.length > 0) {
             dispatch(bagActions.setBagItems(bagItems));
         }
+        // eslint-disable-next-line
     }, [])
     
     const getEmptyCell = (items=0) => {

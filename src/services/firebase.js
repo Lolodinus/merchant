@@ -2,7 +2,7 @@ import { doc, getDocs, updateDoc, collection, query, orderBy, limit } from "fire
 
 import { database } from "../config/firebase";
 
-
+// eslint-disable-next-line
 const _getAllDocsFromFirestore = async(tableDB) => {
     const docsQuery = await query(collection(database, tableDB));
     return await getDocs(docsQuery);
@@ -30,7 +30,7 @@ const _getRandomIDForFirestoreRecord = () => {
     return +autoId;
 }
 
-const _transformWeaponsData = (data) => {
+const _transformWeaponsData = (data, trader) => {
     const newData = [];
     data.forEach(item => {
         newData.push({
@@ -38,17 +38,31 @@ const _transformWeaponsData = (data) => {
             title: item.data().title,
             imgURL: item.data().imgURL,
             price: item.data().price,
+            trader
         })
     })
     return newData;
 }
 
-const _setRandomFieldOnFirestoreDB = (records) => {
+const _transformTradersData = (data) => {
+    const newData = [];
+    data.forEach(item => {
+        newData.push({
+            id: item.id,
+            name: item.data().name,
+            imgURL: item.data().imgURL,
+        })
+    })
+    return newData;
+}
+
+
+const _setRandomFieldOnFirestoreDB = (records, tableDB) => {
     const recordsID = records.map(record => {
         return record.id
     })
     recordsID.forEach(id => {
-        const docRef = doc(database, "items", id);
+        const docRef = doc(database, tableDB, id);
         updateDoc(docRef, {
             random: _getRandomIDForFirestoreRecord()
         });
@@ -57,9 +71,25 @@ const _setRandomFieldOnFirestoreDB = (records) => {
 }
 
 
-export const getAllWeaponsFromFirestore = async(quality) => {
-    const weaponsFromDB = await _getRandomDocFromFirebaseDB("items", quality);
-    const weapon = await _transformWeaponsData(weaponsFromDB);
-    _setRandomFieldOnFirestoreDB(weapon);
-    return weapon
+export const getItemsFromFirestore = async(quality, trader) => {
+    const itemsFromDB = await _getRandomDocFromFirebaseDB("items", quality);
+    const items = await _transformWeaponsData(itemsFromDB, trader);
+    _setRandomFieldOnFirestoreDB(items, "items");
+    return items
+}
+
+export const getTradersFromFirestoreDB = async(quality) => {
+    const tradersFromDB = await _getRandomDocFromFirebaseDB("traders", quality);
+    const traders = await _transformTradersData(tradersFromDB);
+    _setRandomFieldOnFirestoreDB(traders, "traders");
+    return traders
+}
+
+export const setItemsToTraders = async(count, traders) => {
+    let items = [];
+    for(let trader of  traders) {
+        const firebaseItems = await getItemsFromFirestore(count, trader.id);
+        items.push(...firebaseItems);
+    }
+    return items;
 }

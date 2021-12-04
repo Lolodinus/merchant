@@ -11,14 +11,16 @@ import style from "./itemList.module.scss";
 export const ItemsList = () => {
 
     const dispatch = useDispatch();
-    const { items, loading, error } = useSelector((store) => store.items);
+    const { items } = useSelector((store) => store.items);
+    const { traders, activeTrader } = useSelector((store) => store.traders);
     const { bagItemsCount } = useSelector((store) => store.bag);
 
     useEffect(() => {
-        if (items.length <= 0) {
-            dispatch(shopItemsActions.fetchItems(10));
+        if ( items.length <= 0 && traders && traders.length > 0) {
+            dispatch(shopItemsActions.fetchItems(10, traders));
         }
-    }, [])
+        // eslint-disable-next-line
+    }, [dispatch, traders])    
 
     const addItemToBag = ( item ) => {
         if (bagItemsCount < 10) {
@@ -30,10 +32,16 @@ export const ItemsList = () => {
         <ul className={ style["items-list"] }>
             {   
                 items && items.length > 0
-                ? items.map(item => {
-                    return <Item item={ item } key={ item.id } addItem={ addItemToBag } />
-                })
-                : null
+                ? items
+                    .filter(item => {
+                        return item.trader === activeTrader
+                            ? true
+                            : false 
+                    })
+                    .map(item => {
+                        return <Item item={ item } key={ `${item.id}${item.trader}` } addItem={ addItemToBag } />
+                    })
+                : <div>Пусто</div>
             }
         </ul>
     )
