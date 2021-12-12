@@ -1,47 +1,43 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 import { Item } from "../item";
-import { shopItemsActions } from "../../store/shopItems";
-import { bagActions } from "../../store/bag";
 
 import style from "./itemList.module.scss";
 
 
-export const ItemsList = () => {
-
-    const dispatch = useDispatch();
-    const { items } = useSelector((store) => store.items);
-    const { traders, activeTrader } = useSelector((store) => store.traders);
-    const { bagItemsCount } = useSelector((store) => store.bag);
-
-    useEffect(() => {
-        if ( items.length <= 0 && traders && traders.length > 0) {
-            dispatch(shopItemsActions.fetchItems(10, traders));
+export const ItemsList = ({items, itemAction}) => {
+    
+    
+    const getEmptyCell = (items=0) => {
+        let emptyCell = [];
+        for (let i = 0; i < 10 - items; i++) {
+            emptyCell.push({
+                id: i
+            });
         }
-        // eslint-disable-next-line
-    }, [dispatch, traders])    
+        return emptyCell;
+    }
 
-    const addItemToBag = ( item ) => {
-        if (bagItemsCount < 10) {
-            dispatch(bagActions.addItemToBag(item));
-        }
+    if (!items || items.length < 1) {
+        return <div>Пусто</div>
     }
 
     return (
         <ul className={ style["items-list"] }>
             {   
-                items && items.length > 0
-                ? items
-                    .filter(item => {
-                        return item.trader === activeTrader
-                            ? true
-                            : false 
-                    })
+                items
                     .map(item => {
-                        return <Item item={ item } key={ `${item.id}${item.trader}` } addItem={ addItemToBag } />
+                        return <Item item={ item } key={ `${item.id}${item.trader}` } itemAction={ itemAction } />
                     })
-                : <div>Пусто</div>
+            }            
+            {
+                items.length < 10
+                ? getEmptyCell(items.length).map(item => {
+                    return(
+                        <Item key={ item.id } />
+                    )
+                })
+                : null
             }
         </ul>
     )

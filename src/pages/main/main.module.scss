@@ -1,9 +1,10 @@
+@import "../../shareStyle/palette";
+
 .main {
     width: 100%;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    // position: relative;
 
     .main__container {
         height: 100%;
@@ -13,13 +14,45 @@
         padding: 0 15px;
         display: flex;
         flex-grow: 1;
-        // position: absolute;
         
         .main__row {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+
+            .main__left {
+                width: auto;
+            }
+        }
+    }
+}
+
+.navbar {
+    height: 40px;
+    border: .3rem solid $accent-color;
+
+    flex-grow: 0;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    .navbar__link {
+        height: 100%;
+        padding: 0 .5rem;
+
+        background-color: $primary-color-text;
+        color: $accent-color;
+
+        display: flex;
+        justify-content: end;
+        align-items: center;
+
+        &:hover,
+        &:focus {
+            background-color: $accent-color;
+            color: $primary-color-text;
         }
     }
 }

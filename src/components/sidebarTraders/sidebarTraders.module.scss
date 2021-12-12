@@ -12,14 +12,21 @@ h2 {
     margin-left: auto;
     padding-left: 10px;
 
+    display: flex;
+    flex-direction: column;
+
     .traders__container {
-        height: 100%;
+        // height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
 
         .traders__row {
-            height: 100%;
             border: 10px solid $accent-color;
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
 
             .traders__header {
                 height: 45px;
@@ -28,7 +35,7 @@ h2 {
                 justify-content: center;
                 background-color: $accent-color;
 
-                font-size: 28px;
+                font-size: 2rem;
                 color: $primary-color-text;
             }
             .traders__list {

@@ -12,9 +12,10 @@ h3 {
 }
 
 .items-list {
-    width: 100%;
-    margin: 0 -10px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding: 30px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 30px;
 }
