@@ -8,8 +8,8 @@ import style from "./header.module.scss";
 
 
 export const Header = () => {
-
     const { bagItemsCount } = useSelector((store) => store.bag);
+    const { money, day } = useSelector((store) => store.game);
 
     return (
         <header className={ style.header }>
@@ -18,11 +18,11 @@ export const Header = () => {
                     <div className={ style.header_left }>
                         <div className={ style.header__days }>
                             <span  className={ style["header__days-icon"] }/>
-                            19
+                            { day }
                         </div>
                         <div className={ style.header__money }>
                             <span className={ style["header__money-icon"] }/>
-                            20
+                            { money }
                         </div>
                     </div>
                     <div className={ style.header_center }>

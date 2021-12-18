@@ -6,4 +6,5 @@ export const links = {
     traderID: "traderID",
     buy: "/buy",
     sell: "/sell",
+    gameOver: "/game_over",
 }

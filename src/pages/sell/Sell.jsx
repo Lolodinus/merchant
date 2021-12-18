@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { ItemsList } from "../../components/itemsList";
 import { bagActions } from "../../store/bag";
+import { gameActions } from "../../store/game";
 
 import style from "./sell.module.scss";
 
@@ -12,8 +13,8 @@ export const Sell = () => {
     const { bagItems } = useSelector((store) => store.bag);
     
     const sellItems = (item) => {
-        const { id } = item;
-        dispatch(bagActions.deleteItemToBag(id));
+        dispatch(gameActions.getMoney(item.price));
+        dispatch(bagActions.deleteItemToBag(item.id));
     }
 
     return (

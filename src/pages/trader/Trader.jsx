@@ -12,6 +12,7 @@ import { Sell } from "../sell";
 import { tradersActions } from "../../store/traders";
 import { links } from "../../const/pageLinks";
 
+// eslint-disable-next-line
 import style from "./trader.module.scss";
 
 

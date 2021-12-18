@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { UserActionPanel } from "../../components/userActionPanel";
+
 import style from "./news.module.scss";
 
 
@@ -32,6 +34,8 @@ export const News = () => {
                             </div>
                         </li>
                     </ul>
+                    
+                    <UserActionPanel/>
                 </div>
             </div>
         </section>

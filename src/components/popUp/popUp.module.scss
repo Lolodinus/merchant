@@ -1,0 +1,28 @@
+.popup {
+    .popup__wrapper {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgba(black, .8);
+
+        &._active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup__content {
+            width: auto;
+            height: auto;
+            opacity: 0;
+            transition: 1s opacity;
+
+            &._active {
+                opacity: 1;
+                transition: 1s opacity;
+            }
+        }
+    }
+}
