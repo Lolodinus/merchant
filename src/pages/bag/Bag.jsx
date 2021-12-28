@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { bagActions } from "../../store/bag";
-
-import { BagItem } from "../../components/bagItem";
+import { BagItem } from "../../components";
 
 import style from "./bag.module.scss";
 

@@ -1,4 +1,4 @@
-import { getTradersFromFirestoreDB } from "../../services/firebase";
+import { getTradersFromFirestoreDB } from "../../services/merchant";
 
 
 export const tradersActionTypes = {

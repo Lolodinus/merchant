@@ -1,4 +1,4 @@
-import { setItemsToTraders } from "../../services/firebase";
+import { setItemsToTraders } from "../../services/merchant";
 
 
 export const shopItemsActionTypes = {

@@ -8,7 +8,7 @@ const _getAllDocsFromFirestore = async(tableDB) => {
     return await getDocs(docsQuery);
 }
 
-const _getRandomDocFromFirebaseDB = async(tableDB, docsLimit) => {
+export const getRandomDocFromFirebaseDB = async(tableDB, docsLimit) => {
     const docsRef = await collection(database, tableDB);
     const queryRef = await query(docsRef, orderBy("random"), limit(docsLimit));
     return await getDocs(queryRef);
@@ -30,34 +30,7 @@ const _getRandomIDForFirestoreRecord = () => {
     return +autoId;
 }
 
-const _transformWeaponsData = (data, trader) => {
-    const newData = [];
-    data.forEach(item => {
-        newData.push({
-            id: item.id,
-            title: item.data().title,
-            imgURL: item.data().imgURL,
-            price: item.data().price,
-            trader
-        })
-    })
-    return newData;
-}
-
-const _transformTradersData = (data) => {
-    const newData = [];
-    data.forEach(item => {
-        newData.push({
-            id: item.id,
-            name: item.data().name,
-            imgURL: item.data().imgURL,
-        })
-    })
-    return newData;
-}
-
-
-const _setRandomFieldOnFirestoreDB = (records, tableDB) => {
+export const setRandomFieldOnFirestoreDB = (records, tableDB) => {
     const recordsID = records.map(record => {
         return record.id
     })
@@ -68,28 +41,4 @@ const _setRandomFieldOnFirestoreDB = (records, tableDB) => {
         });
 
     })
-}
-
-
-export const getItemsFromFirestore = async(quality, trader) => {
-    const itemsFromDB = await _getRandomDocFromFirebaseDB("items", quality);
-    const items = await _transformWeaponsData(itemsFromDB, trader);
-    _setRandomFieldOnFirestoreDB(items, "items");
-    return items
-}
-
-export const getTradersFromFirestoreDB = async(quality) => {
-    const tradersFromDB = await _getRandomDocFromFirebaseDB("traders", quality);
-    const traders = await _transformTradersData(tradersFromDB);
-    _setRandomFieldOnFirestoreDB(traders, "traders");
-    return traders
-}
-
-export const setItemsToTraders = async(count, traders) => {
-    let items = [];
-    for(let trader of  traders) {
-        const firebaseItems = await getItemsFromFirestore(count, trader.id);
-        items.push(...firebaseItems);
-    }
-    return items;
 }

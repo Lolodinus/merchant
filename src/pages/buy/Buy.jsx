@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { bagActions } from "../../store/bag";
 import { gameActions } from "../../store/game";
-import { ItemsList } from "../../components/itemsList";
+import { ItemsList } from "../../components";
 
 import style from "./buy.module.scss";
 

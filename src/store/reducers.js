@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 import { itemsReducer as items} from "./shopItems";
 import { bagReducer as bag} from "./bag";
 import { tradersReducer as traders} from "./traders";
-import { gameReducer as game } from "./game"
+import { gameReducer as game } from "./game";
+import { newsReducer as news } from "./news";
 
 
 const reducers = combineReducers({
@@ -11,6 +12,7 @@ const reducers = combineReducers({
     bag,
     traders,
     game,
+    news,
 })
 
 export const rootReducer = (state, action) => {

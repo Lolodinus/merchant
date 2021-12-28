@@ -3,7 +3,8 @@ import { gameActionTypes } from "./actions";
 const initialState = {
     money: 100,
     day: 1,
-    gameOver: false
+    gameOver: false,
+    event: null,
 }
 
 export const gameReducer = (state = initialState, action) => {
@@ -27,6 +28,24 @@ export const gameReducer = (state = initialState, action) => {
             return {
                 ...state,
                 gameOver: !state.gameOver,
+            };
+        case gameActionTypes.SET_NEW_EVENT:
+            return {
+                ...state,
+                event: action.payload
+            };
+        case gameActionTypes.EVENT_DONE:
+            return {
+                ...state,
+                event: {
+                    ...state.event,
+                    done: true,
+                }
+            };
+        case gameActionTypes.RESET_NEW_EVENT:
+            return {
+                ...state,
+                event: null,
             };
         default:
             return state;

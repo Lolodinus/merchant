@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ItemsList } from "../../components/itemsList";
+import { ItemsList } from "../../components";
 import { bagActions } from "../../store/bag";
 import { gameActions } from "../../store/game";
 

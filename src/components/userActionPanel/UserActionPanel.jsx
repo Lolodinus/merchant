@@ -12,12 +12,9 @@ export const UserActionPanel = () => {
 
     const endDay = () => {
         if (money > -100 ) {
+            dispatch(gameActions.getNewEvent());
             dispatch(gameActions.nextDay());
-            dispatch(gameActions.spendMoney(10));
-        } 
-        // else {
-        //     dispatch(gameActions.gameOver());
-        // }
+        }
     }
 
     return (        

@@ -1,0 +1,113 @@
+@import "../../shareStyle/palette";
+
+.news-item {
+    width: 100%;
+    padding: 10px;
+    background-color: $primary-color-text;
+    box-shadow: -.5rem 0 0 0 $primary-color-dark,
+                .5rem 0 0 0 $primary-color-dark,
+                0 -.5rem 0 0 $primary-color-dark,
+                0 .5rem 0 0 $primary-color-dark;
+    position: relative;
+
+    &:not(:first-child) {
+        margin-top: 1.5rem;
+    };
+    
+    .news-item__discription {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        font-size: 1rem;
+        text-align: left;
+        color: $primary-text-color;
+
+        .item__discription__tag {
+            display: inline;
+            color: $accent-color;
+        
+            &._add {
+                color: $primary-color;
+            }
+        
+            .item__discription__tag-icon {        
+                width: 1rem;
+                height: 1rem;
+                margin: 0 .2rem;
+                display: inline-block;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+        
+                &._money-icon {
+                    background-image: url("./icon/money_red.png");
+                    &._add {
+                        background-image: url("./icon/money_blue.png");
+                    };
+                }
+        
+                &._bag-item-icon {
+                    background-image: url("./icon/backpack_red.png");
+                    &._add {
+                        background-image: url("./icon/backpack_blue.png");
+                    };
+                }
+        
+                &._day-icon {
+                    &._add {
+                        background-image: url("./icon/days_blue.png");
+                    };
+                }
+            }
+        
+        }
+    }
+    
+    .news-item__info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 1rem;                                            
+
+        .news-item__info-item {
+            height: 100%;
+            width: auto;
+            margin-left: .5rem;
+            color: $primary-text-color;
+            display: flex;
+            align-items: center;
+
+            .news-item__day-icon {
+                width: 1rem;
+                height: 100%;
+                margin-right: .2rem;
+                display: block;
+                background-image: url("./icon/days_blue.png");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;                                
+            };
+            .news-item__money-icon {
+                width: 1rem;
+                height: 100%;
+                margin-right: .1rem;
+                display: block;
+                background-image: url("./icon/money_blue.png");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;                                
+            };
+            .news-item__backpack-icon {
+                width: 1rem;
+                height: 100%;
+                margin-right: .1rem;
+                display: block;
+                background-image: url("./icon/backpack_blue.png");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;                                
+            };
+        }
+    }
+};

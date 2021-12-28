@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    Routes,
-	Route
-  } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import { SidebarTraders } from "../../components/sidebarTraders";
-import { UserActionPanel } from "../../components/userActionPanel";
+import { SidebarTraders, UserActionPanel } from "../../components";
 import { Trader } from "../trader";
 import { links } from "../../const/pageLinks";
 import { shopItemsActions } from "../../store/shopItems";

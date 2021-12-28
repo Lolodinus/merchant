@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { UserActionPanel } from "../../components/userActionPanel";
+import { NewsItem, UserActionPanel } from "../../components";
 
 import style from "./news.module.scss";
 
 
 export const News = () => {
-    const { bagItemsCount } = useSelector((store) => store.bag);
+    const { news } = useSelector((store) => store.news);
 
     return (
         <section className={ style.news }>
@@ -16,25 +16,19 @@ export const News = () => {
                     <h2 className={ style.news__title }>
                         News
                     </h2>
-                    <ul className={ style.news__list }>
-                        <li className={ style.news__item }>
-                            <p className={ style.news__discription }>
-                                Ничего не произошло...
-                            </p>
-                            <div className={ style.news__action }>
-                                <div className={ style["news__action-item"] }>
-                                    <span  className={ style["news__day-icon"] }/> 20
-                                </div>
-                                <div className={ style["news__action-item"] }>
-                                    <span  className={ style["news__money-icon"] }/> 20 
-                                </div>
-                                <div className={ style["news__action-item"] }>
-                                    <span  className={ style["news__backpack-icon"] }/> { bagItemsCount }
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    
+                    <div className={ style.news__list }>
+                        <div className={ style["news__list-wrapper"] }>
+                            {
+                                news && news.length > 0
+                                    ? news.map((item, index) => {
+                                        return (
+                                            <NewsItem news={item} key={index}/>
+                                        )
+                                    }).slice().reverse()
+                                    : null
+                            }
+                        </div>
+                    </div>
                     <UserActionPanel/>
                 </div>
             </div>

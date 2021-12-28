@@ -7,15 +7,11 @@ import {
 	Navigate
   } from "react-router-dom";
 
-import { Header } from "../components/header";
-import { Bag } from "../pages/bag";
-import { News } from "../pages/news";
-import { Trade } from "../pages/trade";
-import { Navbar } from "../components/navbar"
-import { PopUp } from "../components/popUp";
+import { News, Bag, Trade } from "../pages";
+import { Header, Navbar, PopUp, GameOver } from "../components";
+import { useEvent, useNews } from '../hooks';
 import { links } from "../const/pageLinks";
 import { gameActions } from "../store/game";
-import { GameOver } from "../components/gameOver"
 
 import style from './app.module.scss';
 
@@ -23,7 +19,10 @@ import style from './app.module.scss';
 export const App = () => {
     const dispatch = useDispatch();
     const [popUpGameOver, openPopUpGameOver] = useState(false);
-    const { gameOver, money } = useSelector((store) => store.game);
+    const { gameOver, money, event } = useSelector((store) => store.game);	
+
+    useEvent(event);
+    useNews(event);
 
 	useEffect(() => {
         if (!gameOver && money <= -100 ) {
@@ -33,9 +32,9 @@ export const App = () => {
 
 	useEffect(() => {
 		if (gameOver) {
-			openPopUpGameOver(true)
+			openPopUpGameOver(true);
 		} else {
-			openPopUpGameOver(false)
+			openPopUpGameOver(false);
 		}
 	}, [gameOver])
 
