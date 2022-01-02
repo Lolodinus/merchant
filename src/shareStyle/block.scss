@@ -1,0 +1,43 @@
+@import "./palette";
+@use "sass:math";
+
+
+%block {
+    width: 100%;
+    min-height: 3rem;
+    padding: .5rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 2rem;
+}
+
+@mixin block-border($first-color, $second-color, $border-size: 0.4rem) {
+    @extend %block;
+    border: $border-size solid $first-color;
+    background: $second-color;
+    color: $first-color;
+}
+@mixin block-border-pixel($first-color, $second-color, $border-size: 0.4rem) {
+    @extend %block;
+    background: $second-color;
+    color: $first-color;
+    box-shadow: $border-size * -1 0 0 0 $first-color,
+                $border-size 0 0 0 $first-color,
+                0 $border-size * -1 0 0 $first-color,
+                0 $border-size 0 0 $first-color;
+}
+
+@mixin accent-block-border($border-size: 0.4rem) {
+    @include block-border($accent-color, $primary-color-text, $border-size);
+}
+
+@mixin dark-primary-block-border($border-size: 0.4rem) {
+    @include block-border($primary-color-dark, $primary-color-text, $border-size);
+}
+
+@mixin dark-primary-block-border-pixel($border-size: .4rem) {
+    @include block-border-pixel($primary-color-dark, $primary-color-text, $border-size);
+}

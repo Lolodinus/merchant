@@ -1,4 +1,5 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/block";
 
 
 .news {
@@ -24,11 +25,9 @@
             flex-grow: 1;
 
             .news__title {
-                font-size: 2rem;
-                color: $accent-color;
-        
-                border: .4rem solid $accent-color;
-                background-color: $primary-color-text;
+                @include accent-block-border;
+                padding-top: 0;
+                padding-bottom: 0;
             };
 
             .news__list {
@@ -42,7 +41,7 @@
                     top: 0;
                     height: 100%;
                     width: 100%;
-                    padding: 1.5rem .5rem;
+                    padding: 1.5rem .4rem;
                     overflow-y: scroll;
                 }
             };

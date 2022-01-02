@@ -1,4 +1,6 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/btn";
+@import "../../shareStyle/block";
 
 
 .user-actions {
@@ -6,37 +8,13 @@
     .user-actions__container {
         padding: 10px;
         .user-actions__row {
-            display: flex;
+            @include dark-primary-block-border-pixel;
             justify-content: flex-end;
-            align-items: flex-end;
-            padding: 10px;
-            background-color: $primary-color-text;    
-            box-shadow: -10px 0 0 0 $primary-color-dark,
-                        10px 0 0 0 $primary-color-dark,
-                        0 -10px 0 0 $primary-color-dark,
-                        0 10px 0 0 $primary-color-dark;
         
             .user-actions__btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                @extend %special-accent-btn;
                 min-width: 0;
-                height: 40px;
-                padding: 10px;
-                font-family: inherit;
-                font-size: 20px;
-                color: $primary-text-color;
-                border: 5px solid $accent-color;
-                box-shadow: none;
-                
-                &:hover,
-                &:focus {
-                    background-color: $accent-color;
-                    color: $primary-color-text;
-                };
-                &:active {
-                    transform: scale(.95);
-                }
+                width: 10rem;
             }
             
         }

@@ -1,4 +1,5 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/img";
 
 
 a {
@@ -30,19 +31,15 @@ a {
                     align-items: center;
                     justify-content: flex-start;
 
-                    font-size: 20px;
+                    font-size: 1rem;
                     color: $primary-color-text;
 
                     .header__days-icon {
-                        width: 30px;
-                        height: 30px;
-                        margin-right: 5px;
-                        display: block;
                         background-image: url("./icon/days_white.png");
-                        background-size: contain;
-                        background-position: center;
-                        background-repeat: no-repeat;
-
+                        @extend %img-option;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        margin-right: .5rem;
                         &._active {
                             background-image: url("./icon/days_active.png");
                         }
@@ -50,23 +47,20 @@ a {
                 }
                 .header__money {
                     height: 100%;
-                    margin-left: 20px;
+                    margin-left: 1rem;
                     display: flex;
                     align-items: center;
                     justify-content: flex-start;
 
-                    font-size: 20px;
+                    font-size: 1rem;
                     color: $primary-color-text;
 
                     .header__money-icon {
-                        width: 30px;
-                        height: 30px;
-                        margin-right: 5px;
-                        display: block;
                         background-image: url("./icon/money_white.png");
-                        background-size: contain;
-                        background-position: center;
-                        background-repeat: no-repeat;
+                        @extend %img-option;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        margin-right: .5rem;
 
                         &._active {
                             background-image: url("./icon/money_active.png");
@@ -80,7 +74,7 @@ a {
                 justify-content: center;
                 align-items: center;
 
-                font-size: 45px;
+                font-size: 2.5rem;
                 color: $primary-color-text;
 
                 .header_logo-link {
@@ -107,19 +101,15 @@ a {
         align-items: center;
         justify-content: flex-end;
 
-        font-size: 20px;
+        font-size: 1rem;
         color: $primary-color-text;
 
         .bag__icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 5px;
-            display: block;
             background-image: url("./icon/backpack_white.png");
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-
+            @extend %img-option;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: .5rem;
             &._active {
                 background-image: url("./icon/backpack_active.png");
             }

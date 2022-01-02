@@ -1,4 +1,5 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/block";
 
 
 .buy {
@@ -6,11 +7,8 @@
     flex-direction: column;
     flex-grow: 1;
     .buy__title {
-        margin-bottom: 20px;
-        font-size: 2rem;
-        color: $accent-color;
-
-        border: .4rem solid $accent-color;
-        background-color: $primary-color-text;
+        @include accent-block-border;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }

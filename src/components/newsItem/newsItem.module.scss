@@ -1,14 +1,11 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/block";
+@import "../../shareStyle/img";
+
 
 .news-item {
-    width: 100%;
-    padding: 10px;
-    background-color: $primary-color-text;
-    box-shadow: -.5rem 0 0 0 $primary-color-dark,
-                .5rem 0 0 0 $primary-color-dark,
-                0 -.5rem 0 0 $primary-color-dark,
-                0 .5rem 0 0 $primary-color-dark;
-    position: relative;
+    @include dark-primary-block-border-pixel;
+    flex-direction: column;
 
     &:not(:first-child) {
         margin-top: 1.5rem;
@@ -31,14 +28,12 @@
                 color: $primary-color;
             }
         
-            .item__discription__tag-icon {        
+            .item__discription__tag-icon {
+                @extend %img-option;
                 width: 1rem;
                 height: 1rem;
                 margin: 0 .2rem;
                 display: inline-block;
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;
         
                 &._money-icon {
                     background-image: url("./icon/money_red.png");
@@ -66,9 +61,9 @@
     
     .news-item__info {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        height: 1rem;                                            
+        align-self: flex-end;
+        height: 1rem;
+        font-size: 1rem;
 
         .news-item__info-item {
             height: 100%;
@@ -79,34 +74,25 @@
             align-items: center;
 
             .news-item__day-icon {
+                background-image: url("./icon/days_blue.png");
+                @extend %img-option;
                 width: 1rem;
                 height: 100%;
                 margin-right: .2rem;
-                display: block;
-                background-image: url("./icon/days_blue.png");
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;                                
             };
             .news-item__money-icon {
+                background-image: url("./icon/money_blue.png");
+                @extend %img-option;
                 width: 1rem;
                 height: 100%;
-                margin-right: .1rem;
-                display: block;
-                background-image: url("./icon/money_blue.png");
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;                                
+                margin-right: .2rem;                           
             };
             .news-item__backpack-icon {
+                background-image: url("./icon/backpack_blue.png");
+                @extend %img-option;
                 width: 1rem;
                 height: 100%;
-                margin-right: .1rem;
-                display: block;
-                background-image: url("./icon/backpack_blue.png");
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;                                
+                margin-right: .2rem;                          
             };
         }
     }

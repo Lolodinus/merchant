@@ -1,4 +1,5 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/btn";
 
 
 .traders__item {
@@ -54,59 +55,21 @@
     }
     .traders__actions {
         width: 100%;
+        margin-top: .5rem;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
 
         .traders__actions-buy {
-            height: 40px;
+            @extend %accent-btn;
             width: 80px;
-            margin: 10px 10px 0 10px;
-            border: none;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-family: inherit;
-            font-size: 20px;
-            color: $primary-color-text;
-            background-color: $accent-color;
-            cursor: pointer;
-
-            &:hover,
-            &:focus {
-                border: 5px solid $accent-color;
-                background-color: $primary-color-text;
-                color: $accent-color;
-            };
-            &:active {
-                transform: scale(.95);
-            };
+            margin: 0 .5rem;
         };
         .traders__actions-sell {
-            height: 40px;
+            @extend %reverse-accent-btn;            
             width: 80px;
-            margin: 0 10px;
-            border: none;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-family: inherit;
-            font-size: 20px;
-            color: $accent-color;
-            cursor: pointer;
-
-            &:hover,
-            &:focus {
-                background-color: $accent-color;
-                color: $primary-color-text;
-            };
-            &:active {
-                transform: scale(.95);
-            };
+            margin: 0 .5rem;
         }
     }
 }

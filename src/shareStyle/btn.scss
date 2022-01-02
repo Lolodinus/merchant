@@ -1,0 +1,86 @@
+@import "./palette";
+
+
+%btn {
+    min-height: 2rem;
+    margin: none;
+    border: none;
+    padding: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: none;
+    padding: 0 .4rem;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    &:active {
+      transform: scale(.95);
+    };
+}
+  
+@mixin btn-colorfull($first-color, $second-color) {
+    @extend %btn;
+    color: $second-color;
+    background: $first-color;
+    &:hover,
+    &:focus {
+        border: .3rem solid $first-color;
+        background: $second-color;
+        color: $first-color;
+    };
+}
+
+@mixin btn-reverse($first-color, $second-color) {
+    @extend %btn;
+    color: $second-color;
+    background: $first-color;
+    &:hover,
+    &:focus {
+        background: $second-color;
+        color: $first-color;
+    };
+}
+  
+@mixin btn-with-border($first-color, $second-color) {
+    @extend %btn;
+    border: 0.3rem solid $first-color;
+    background: $second-color;
+    color: $first-color;
+    &:hover,
+    &:focus {
+        background: $first-color;
+        color: $second-color;
+    };
+}
+  
+  
+// shared btn
+%accent-btn {
+    @extend %btn;
+    @include btn-colorfull($first-color: $accent-color, $second-color: $primary-color-text);
+}
+%reverse-accent-btn {
+    @extend %btn;
+    @include  btn-reverse($first-color: $primary-color-text, $second-color: $accent-color);
+}
+%btn-with-accent-border {
+    @extend %btn;
+    @include btn-with-border($first-color: $accent-color, $second-color: $primary-color-text);
+}
+%special-accent-btn {
+    @extend %btn-with-accent-border;
+    color: $primary-text-color;
+}
+
+
+%primary-btn {
+    @extend %btn;
+    @include btn-colorfull($first-color: $primary-color, $second-color: $primary-color-text);
+}
+%btn-with-primary-border {
+    @extend %btn;
+    @include btn-with-border($first-color: $primary-color, $second-color: $primary-color-text);
+}

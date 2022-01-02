@@ -1,4 +1,6 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/btn";
+@import "../../shareStyle/block";
 
 
 .navbar {
@@ -15,30 +17,18 @@
         justify-content: flex-start;
 
         .navbar__row {
+            @include accent-block-border(.3rem);
+            width: auto;
             min-width: 0;
-            height: 100%;
-            border: .3rem solid $accent-color;
-        
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            min-height: auto;
+            padding: 0;
+            font-size: 1rem;
 
             .navbar__link {
-                height: 100%;
-                padding: 0 .5rem;
-        
-                background-color: $primary-color-text;
-                color: $accent-color;
-        
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-        
-                &:hover,
-                &:focus {
-                    background-color: $accent-color;
-                    color: $primary-color-text;
-                }
+                @extend %reverse-accent-btn;
+                &:active {
+                  transform: none;
+                };
             }
         }
     }

@@ -1,4 +1,5 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/block";
 
 .bag {
     height: 100%;
@@ -13,21 +14,19 @@
         flex-direction: column;
 
         .bag__header {
-            font-size: 36px;
-            color: $accent-color,
+            @include accent-block-border;
+            padding-top: 0;
+            padding-bottom: 0;
         }
         .bag__list {
+            @include dark-primary-block-border-pixel(.4rem);
             width: auto;
             display: grid;
-            margin: 0 10px;
+            margin: 0 .4rem;
             margin-top: 1rem;
-            padding: 0.5rem;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 0.5rem;
-            box-shadow: -10px 0 0 0 $primary-color-dark,
-                        10px 0 0 0 $primary-color-dark,
-                        0 -10px 0 0 $primary-color-dark,
-                        0 10px 0 0 $primary-color-dark;
+            padding: 1rem;
+            grid-template-columns: repeat(5, minmax(150px, 1fr));
+            gap: 1rem;
             background: rgba($primary-color-text, 0.5);
         }
     }

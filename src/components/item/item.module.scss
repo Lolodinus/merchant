@@ -1,21 +1,15 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/btn";
+@import "../../shareStyle/block";
+
 
 .item {
 
     .item__container {
+        @include dark-primary-block-border-pixel;
         height: 100%;
-        padding: 10px;
-        background-color: $primary-color-text;
-        box-shadow: -10px 0 0 0 $primary-color-dark,
-                    10px 0 0 0 $primary-color-dark,
-                    0 -10px 0 0 $primary-color-dark,
-                    0 10px 0 0 $primary-color-dark;
-        position: relative;
-
-        display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        position: relative;
         
         .item__title {
             margin-top: -10px;
@@ -39,26 +33,8 @@
             color: $primary-color;
         };
         .item__btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            width: 70%;
-            margin: 0 auto;
-            padding: 10px;
-            font-family: inherit;
-            font-size: 20px;
-            color: $primary-text-color;
-            border: 5px solid $accent-color;
-            
-            &:hover,
-            &:focus {
-                background-color: $accent-color;
-                color: $primary-color-text;
-            };
-            &:active {
-                transform: scale(.95);
-            }
+            @extend %special-accent-btn;
+            width: 90%;
         }
         .item__quantity {
             height: 2rem;
