@@ -1,4 +1,4 @@
-import { doc, getDocs, updateDoc, collection, query, orderBy, limit } from "firebase/firestore";
+import { doc, getDoc, getDocs, updateDoc, collection, query, orderBy, limit } from "firebase/firestore";
 
 import { database } from "../config/firebase";
 
@@ -14,7 +14,7 @@ export const getRandomDocFromFirebaseDB = async(tableDB, docsLimit) => {
     return await getDocs(queryRef);
 }
 
-const _getRandomIDForFirestoreRecord = () => {
+export const _getRandomIDForFirestoreRecord = () => {
     let autoId = '';
     const targetLength = 20;
     while (autoId.length < targetLength) {
@@ -41,4 +41,41 @@ export const setRandomFieldOnFirestoreDB = (records, tableDB) => {
         });
 
     })
+}
+
+export async function getDocById(tableDB, recordId) {
+    const docRef = doc(database, tableDB, recordId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        const data = await docSnap.data();
+        return data;
+    } else {
+        console.log(`No such document! Table: ${tableDB}, ID: ${recordId}`);
+    }
+}
+
+export async function transformRef(items, ...refFields) {
+    let newData = [];
+
+    async function getDataRef(ref) {
+        const refSnap = await getDoc(ref);
+
+        return {
+            id: refSnap.id,
+            ...refSnap.data()
+        }
+    }
+    for (let item of items) {
+        let transformItem = {
+            ...item
+        }
+        for(let field of refFields) {
+            transformItem = {
+                ...transformItem,
+                [field]: await getDataRef(item[field])
+            }
+        }
+        newData.push(transformItem);
+    }
+    return newData;
 }

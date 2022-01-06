@@ -7,11 +7,11 @@ import { links } from "../../const/pageLinks";
 import style from "./trader.module.scss";
 
 
-export const Trader = ({trader, selectTrader}) => {
+export const Trader = ({trader}) => {
     const { activeTrader } = useSelector((store) => store.traders);
 
     return (
-        <div className={ `${style.traders__item} ${trader.id === activeTrader ? style._active : ""}` }>
+        <div className={ `${style.traders__item} ${trader.id === activeTrader.id ? style._active : ""}` }>
             <div 
                 className={ style.traders__avatar }
             >

@@ -1,4 +1,6 @@
 @import "../../shareStyle/palette";
+@import "../../shareStyle/block";
+@import "../../shareStyle/img";
 
 ul {
     list-style: none;
@@ -12,10 +14,50 @@ h3 {
 }
 
 .items-list {
-    padding: 30px;
+    padding: 2rem;
     flex-grow: 1;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: grid;    
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-template-rows: repeat(2, 1fr);
-    grid-gap: 30px;
+    grid-auto-flow: column;
+    grid-gap: 1.5rem;
+}
+
+.empty-bag {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    .empty-bag__container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        .empty-bag__row {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+            justify-content: center;
+            position: relative;
+
+            .empty-bag__text {
+                @include accent-block-border-pixel();
+                width: 80%;
+                margin: auto;
+                font-size: 1.5rem;
+            }
+            .empty-bag__img {
+                background-image: url("./img/empty_bag.png");
+                @extend %img-option;
+
+                position: absolute;
+                height: 70%;
+                width: 70%;
+                opacity: .5;
+                z-index: -1;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+            }
+        }
+    }
 }

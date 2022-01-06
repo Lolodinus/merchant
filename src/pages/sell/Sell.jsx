@@ -11,16 +11,25 @@ import style from "./sell.module.scss";
 export const Sell = () => {
     const dispatch = useDispatch();
     const { bagItems } = useSelector((store) => store.bag);
+    const { activeTrader } = useSelector((store) => store.traders);
     
     const sellItems = (item) => {
         dispatch(gameActions.getMoney(item.price));
         dispatch(bagActions.deleteItemToBag(item.id));
     }
 
+    const getBagItemByTraderCategory = (bagItems) => {
+        return bagItems.filter(item => {
+            return item.category.id === activeTrader.category.id ? true : false;
+        })
+    }
+
     return (
         <section className={ style.sell }>
             <h2 className={ style.sell__title }>Sell</h2>
-            <ItemsList items={ bagItems } itemAction={ sellItems } />
+            {
+                activeTrader && <ItemsList items={ getBagItemByTraderCategory(bagItems) } itemAction={ sellItems } btnName={"Sell"} />
+            }
         </section>
     )
 }

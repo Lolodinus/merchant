@@ -3,7 +3,7 @@ import React from "react";
 import style from "./item.module.scss";
 
 
-export const Item = ({item, itemAction}) => {
+export const Item = ({item, itemAction, btnName}) => {
     return (
         <div className={ style.item }>
             <div  className={ style.item__container }>
@@ -30,7 +30,7 @@ export const Item = ({item, itemAction}) => {
                                 className={style.item__btn}
                                 onClick={ () => itemAction(item) }
                             >
-                                Buy
+                                { btnName }
                             </button>
                         </>
                         )

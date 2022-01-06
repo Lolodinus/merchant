@@ -29,7 +29,7 @@ export const Buy = () => {
         if (items && items.length > 0) {
             newItems = items
                 .filter(item => {
-                    return item.trader === activeTrader
+                    return item.trader === activeTrader.id
                         ? true
                         : false 
                 })
@@ -41,7 +41,7 @@ export const Buy = () => {
     return (
         <section className={ style.buy }>
             <h2 className={ style.buy__title }>Bay</h2>
-            <ItemsList items={ traderItems(items) } itemAction={ addItemToBag } />
+            <ItemsList items={ traderItems(items) } itemAction={ addItemToBag } btnName={"Buy"} />
         </section>
     )
 }

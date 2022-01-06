@@ -34,6 +34,10 @@
     @include block-border($accent-color, $primary-color-text, $border-size);
 }
 
+@mixin accent-block-border-pixel($border-size: .4rem) {
+    @include block-border-pixel($accent-color, $primary-color-text, $border-size);
+}
+
 @mixin dark-primary-block-border($border-size: 0.4rem) {
     @include block-border($primary-color-dark, $primary-color-text, $border-size);
 }

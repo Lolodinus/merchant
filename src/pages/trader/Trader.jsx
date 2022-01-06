@@ -11,6 +11,7 @@ import { Buy } from "../buy";
 import { Sell } from "../sell";
 import { tradersActions } from "../../store/traders";
 import { links } from "../../const/pageLinks";
+import { getTraderCategoryRefByTraderId } from "../../services/merchant";
 
 // eslint-disable-next-line
 import style from "./trader.module.scss";
@@ -21,9 +22,20 @@ export const Trader = () => {
     const { traderID } = useParams();
     const { traders } = useSelector((store) => store.traders);
 
+    const setActiveTrader = async(traderID) => {
+        const trader = await {
+            id: traderID,
+            category: await getTraderCategoryRefByTraderId(traderID),
+        }
+        dispatch(tradersActions.setActiveTrader(trader));
+    }
+
     useEffect(() => {
-        dispatch(tradersActions.setActiveTrader(traderID));
-    }, [dispatch, traderID])
+        if(traderID) {
+            setActiveTrader(traderID);
+        }
+        // eslint-disable-next-line
+    }, [traderID])
 
     // trader don't exist => redirect to main page
     if ( 

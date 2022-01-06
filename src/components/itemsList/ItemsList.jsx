@@ -5,7 +5,7 @@ import { Item } from "../item";
 import style from "./itemList.module.scss";
 
 
-export const ItemsList = ({items, itemAction}) => {
+export const ItemsList = ({items, itemAction, btnName}) => {
     
     
     const getEmptyCell = (items=0) => {
@@ -17,9 +17,19 @@ export const ItemsList = ({items, itemAction}) => {
         }
         return emptyCell;
     }
-
     if (!items || items.length < 1) {
-        return <div>Пусто</div>
+        return (
+            <div className={`${style["sell__empty-bag"]} ${style["empty-bag"]}`}>
+                <div className={ style["empty-bag__container"] } >
+                    <div className={ style["empty-bag__row"] } >
+                        <div className={ style["empty-bag__text"] } >
+                            Пусто
+                        </div>                        
+                        <div className={ style["empty-bag__img"] } />
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -27,9 +37,9 @@ export const ItemsList = ({items, itemAction}) => {
             {   
                 items
                     .map(item => {
-                        return <Item item={ item } key={ `${item.id}${item.trader}` } itemAction={ itemAction } />
+                        return <Item item={ item } key={ `${item.id}${item.trader}` } itemAction={ itemAction } btnName={ btnName }/>
                     })
-            }            
+            }
             {
                 items.length < 10
                 ? getEmptyCell(items.length).map(item => {

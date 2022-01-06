@@ -18,10 +18,6 @@ export const SidebarTraders = () => {
         // eslint-disable-next-line
     }, [])
 
-    const selectTrader = (id) => {
-        dispatch(tradersActions.setActiveTrader(id));        
-    }
-
     return (
         <section className={ style.traders }>
             <div className={ style.traders__container }>
@@ -35,7 +31,6 @@ export const SidebarTraders = () => {
                                 ? traders.map(trader => {
                                     return <Trader 
                                                 trader={trader}
-                                                selectTrader={selectTrader}
                                                 key={trader.id}
                                             />
                                 })
