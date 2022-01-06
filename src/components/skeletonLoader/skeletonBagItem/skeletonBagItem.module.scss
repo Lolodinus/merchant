@@ -1,0 +1,85 @@
+@import "../../../shareStyle/palette";
+@import "../../../shareStyle/block";
+
+
+.skeleton-bag-item {
+    @include dark-primary-block-border(.3rem);
+    position: relative;
+    &::before {
+        content: "";
+        padding-bottom: 100%;
+        display: block;
+    };
+
+    .skeleton-bag-item__content {
+        width: 100%;
+        height: 100%;
+        padding: .5rem 1rem;
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+
+        .skeleton-bag-item__title {
+            width: 100%;
+            height: 2rem;
+            margin: .5rem 0;
+            animation: base-animate 2s infinite linear;
+        }
+        .skeleton-bag-item__img {
+            flex-grow: 1;
+            width: 80%;
+            margin: .5rem auto;
+            padding: 0.5rem;
+            animation: base-animate 2s infinite linear;
+        }
+        .skeleton-bag-item__count {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            min-width: 2rem;
+            height: 1.4rem;
+            padding: 0.2rem;
+            animation: quantity-animate 2s infinite linear;
+        }
+    }
+}
+
+@keyframes base-animate {
+    0% {
+        background-color: rgba($divider-color, .4);
+    } 
+    25% {
+        background-color: rgba($divider-color, .5);
+    }    
+    50% {
+        background-color: rgba($divider-color, .6);
+    }    
+    75% {
+        background-color: rgba($divider-color, .5);
+    }    
+    100% {
+        background-color: rgba($divider-color, .4);
+    }
+}
+
+@keyframes quantity-animate {
+    0% {
+        background-color: rgba($accent-color, .4);
+    } 
+    25% {
+        background-color: rgba($accent-color, .5);
+    }    
+    50% {
+        background-color: rgba($accent-color, .6);
+    }    
+    75% {
+        background-color: rgba($accent-color, .5);
+    }    
+    100% {
+        background-color: rgba($accent-color, .4);
+    }
+}

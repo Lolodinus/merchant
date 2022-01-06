@@ -1,0 +1,28 @@
+@import "../../shareStyle/palette";
+@import "../../shareStyle/block";
+
+
+.skeleton-loader {
+
+    &.item-list {
+        display: grid;
+        padding: 2rem;
+        flex-grow: 1;  
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
+        grid-auto-flow: column;
+        grid-gap: 1.5rem;
+    }
+
+    &.bag-list {
+        display: grid;
+        @include dark-primary-block-border-pixel(.4rem);
+        width: auto;
+        margin: 0 .4rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        grid-template-columns: repeat(5, minmax(150px, 1fr));
+        gap: 1rem;
+        background: rgba($primary-color-text, 0.5);
+    }
+}

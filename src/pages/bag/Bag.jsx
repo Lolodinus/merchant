@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { bagActions } from "../../store/bag";
-import { BagItem } from "../../components";
+import { BagItem, SkeletonLoader, UserActionPanel } from "../../components";
 
 import style from "./bag.module.scss";
 
@@ -10,7 +10,7 @@ import style from "./bag.module.scss";
 export const Bag = () => {
 
     const dispatch = useDispatch();
-    const { bagItems } = useSelector((store) => store.bag);
+    const { bagItems, loading } = useSelector((store) => store.bag);
 
     useEffect(() => {
         if (bagItems && bagItems.length > 0) {
@@ -39,24 +39,29 @@ export const Bag = () => {
                 <h2 className={ style.bag__header }>
                     Bag
                 </h2>
-                <div className={ style.bag__list }>
-                    {
-                        bagItems && bagItems.length > 0
-                            ? bagItems.map(item => {
-                                return (                                    
-                                    <BagItem item={item} deleteItem={deleteItems} key={ item.id } />
-                                )
-                            })
-                            : null
-                    }
-                    {
-                        getEmptyCell(bagItems.length).map(item => {
-                            return(
-                                <BagItem item={item} deleteItem={deleteItems} empty={ true } key={ item.id } />
-                            )
-                        })
-                    }
-                </div>
+                {
+                    loading
+                        ? <SkeletonLoader quantity={10} type={"bag-list"}/>
+                        : <div className={ style.bag__list }>
+                            {
+                                bagItems && bagItems.length > 0
+                                    ? bagItems.map(item => {
+                                        return (                                    
+                                            <BagItem item={item} deleteItem={deleteItems} key={ item.id } />
+                                        )
+                                    })
+                                    : null
+                            }
+                            {
+                                getEmptyCell(bagItems.length).map(item => {
+                                    return(
+                                        <BagItem item={item} deleteItem={deleteItems} empty={ true } key={ item.id } />
+                                    )
+                                })
+                            }
+                        </div>
+                }
+                <UserActionPanel/>
             </div>
         </section>
     )

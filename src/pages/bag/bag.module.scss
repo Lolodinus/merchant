@@ -3,15 +3,19 @@
 
 .bag {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
 
     .bag__container {
         height: 100%;
         max-width: 1200px;
-        margin: auto;
         padding: 0 15px;
 
         display: flex;
         flex-direction: column;
+        flex-grow: 1;
 
         .bag__header {
             @include accent-block-border;
@@ -21,12 +25,15 @@
         .bag__list {
             @include dark-primary-block-border-pixel(.4rem);
             width: auto;
-            display: grid;
-            margin: 0 .4rem;
-            margin-top: 1rem;
+            margin: 1rem .4rem;
             padding: 1rem;
+
+            display: grid;
             grid-template-columns: repeat(5, minmax(150px, 1fr));
+            grid-template-rows: repeat(3, 1fr);
             gap: 1rem;
+
+            flex-grow: 1;
             background: rgba($primary-color-text, 0.5);
         }
     }

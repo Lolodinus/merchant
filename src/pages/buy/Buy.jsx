@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { bagActions } from "../../store/bag";
 import { gameActions } from "../../store/game";
-import { ItemsList } from "../../components";
+import { ItemsList, SkeletonLoader } from "../../components";
 
 import style from "./buy.module.scss";
 
@@ -11,7 +11,7 @@ import style from "./buy.module.scss";
 export const Buy = () => {
 
     const dispatch = useDispatch();
-    const { items } = useSelector((store) => store.items);
+    const { items, loading } = useSelector((store) => store.items);
     const { activeTrader } = useSelector((store) => store.traders);
     const { bagItemsCount } = useSelector((store) => store.bag);
     const { money } = useSelector((store) => store.game);
@@ -41,7 +41,11 @@ export const Buy = () => {
     return (
         <section className={ style.buy }>
             <h2 className={ style.buy__title }>Bay</h2>
-            <ItemsList items={ traderItems(items) } itemAction={ addItemToBag } btnName={"Buy"} />
+            {
+                loading
+                    ? <SkeletonLoader quantity={10} type={"item-list"}/>
+                    : <ItemsList items={ traderItems(items) } itemAction={ addItemToBag } btnName={"Buy"} />
+            }
         </section>
     )
 }

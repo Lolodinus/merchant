@@ -13,3 +13,5 @@ export { Trader } from "./trader";
 export { PopUp } from "./popUp";
 
 export { GameOver } from "./gameOver";
+
+export { SkeletonLoader } from "./skeletonLoader";
