@@ -1,8 +1,8 @@
-@import "../../shareStyle/palette";
-@import "../../shareStyle/btn";
+@import "../../../shareStyle/palette";
+@import "../../../shareStyle/btn";
 
 
-.traders__item {
+.skeleton-trader {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,11 +12,7 @@
     border-bottom: 5px solid $accent-color;
     padding: 10px;
 
-    &._active {
-        background: $primary-color-dark;
-    }
-
-    .traders__avatar {
+    .skeleton-trader__avatar {
         height: 100px;
         width: 100px;
         margin: 10px auto;
@@ -25,34 +21,15 @@
                     6px 0 0 0 $primary-color-text,
                     0 -6px 0 0 $primary-color-text,
                     0 6px 0 0 $primary-color-text;
-        cursor: pointer;
-
-        .traders__avatar-link {
-            height: 100px;
-            width: 100px;
-
-            img {
-                height: 100px;
-                width: 100px;
-            }
-        }
+        animation: base-animate 2s infinite linear;
     }
-    .traders__title {
+    .skeleton-trader__title {
+        height: 2.4rem;
+        width: 90%;
         margin-top: 10px;
-        font-size: 1.2rem;
-        color: $primary-color-text;
-        cursor: pointer;
-
-        .traders__title-link {
-            font-size: inherit;
-            color: inherit;
-        }
-    };    
-    .traders__discription {
-        margin: 0;
-        padding: 0;
-    }
-    .traders__actions {
+        animation: base-animate 3s infinite linear;
+    };
+    .skeleton-trader__actions {
         width: 100%;
         margin-top: .5rem;
 
@@ -60,15 +37,33 @@
         align-items: center;
         justify-content: space-between;
 
-        .traders__actions-buy {
+        .skeleton-trader__actions-buy {
             @extend %accent-btn;
             width: 80px;
             margin: 0 .5rem;
         };
-        .traders__actions-sell {
+        .skeleton-trader__actions-sell {
             @extend %reverse-accent-btn;            
             width: 80px;
             margin: 0 .5rem;
         }
+    }
+}
+
+@keyframes base-animate {
+    0% {
+        background-color: rgba($primary-color-text, .4);
+    } 
+    25% {
+        background-color: rgba($primary-color-text, .7);
+    }    
+    50% {
+        background-color: rgba($primary-color-text, 1);
+    }    
+    75% {
+        background-color: rgba($primary-color-text, .7);
+    }    
+    100% {
+        background-color: rgba($primary-color-text, .4);
     }
 }

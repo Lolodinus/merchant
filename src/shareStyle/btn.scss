@@ -84,3 +84,9 @@
     @extend %btn;
     @include btn-with-border($first-color: $primary-color, $second-color: $primary-color-text);
 }
+
+
+%white-btn {
+    @extend %btn;
+    @include btn-colorfull($first-color: $primary-color-text, $second-color:  $accent-color);
+}

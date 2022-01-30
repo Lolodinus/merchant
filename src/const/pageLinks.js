@@ -7,4 +7,5 @@ export const links = {
     buy: "/buy",
     sell: "/sell",
     gameOver: "/game_over",
+    error: "/error",
 }

@@ -1,26 +1,33 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { SidebarTraders, UserActionPanel } from "../../components";
 import { Trader } from "../trader";
 import { links } from "../../const/pageLinks";
-import { shopItemsActions } from "../../store/shopItems";
+import { tradersActions } from "../../store/traders";
 
 import style from "./trade.module.scss";
 
 
 export const Trade = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { items } = useSelector((store) => store.items);
-    const { traders } = useSelector((store) => store.traders);
+    const { traders, loading, error } = useSelector((store) => store.traders);    
 
     useEffect(() => {
-        if ( items.length <= 0 && traders && traders.length > 0) {
-            dispatch(shopItemsActions.fetchItems(10, traders));
+        if (traders.length <= 0 && !loading && !error) {
+            dispatch(tradersActions.fetchTraders(3));
         }
         // eslint-disable-next-line
-    }, [dispatch, traders])
+    }, [traders])
+
+    useEffect(() => {
+        if (error) {
+            navigate(links.error, {state: error})
+        }
+        // eslint-disable-next-line
+    }, [error])
 
     return (
         <section className={ style.trade }>

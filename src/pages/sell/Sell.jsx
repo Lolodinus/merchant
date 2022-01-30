@@ -21,7 +21,7 @@ export const Sell = () => {
     const getBagItemByTraderCategory = (bagItems) => {
         return bagItems.filter(item => {
             return item.category.id === activeTrader.category.id ? true : false;
-        })
+        });
     }
 
     return (

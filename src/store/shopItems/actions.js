@@ -18,7 +18,10 @@ export const shopItemsActions = {
             const items = await setItemsToTraders(quality, traders);
             dispatch(shopItemsActions.itemsSuccess(items));
         } catch(error) {
-            dispatch(shopItemsActions.itemsFail(error.message));
+            dispatch(shopItemsActions.itemsFail({
+                title: error.code,
+                discription: error.message
+            }));
         } 
     },
 }

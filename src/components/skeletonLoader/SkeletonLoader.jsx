@@ -2,6 +2,7 @@ import React from "react";
 
 import { SkeletonItem } from "./skeletonItem";
 import { SkeletonBagItem } from "./skeletonBagItem";
+import { SkeletonTrader } from "./skeletonTrader";
 
 import style from "./skeletoneLoader.module.scss";
 
@@ -13,6 +14,8 @@ export const SkeletonLoader = ({ quantity, type }) => {
                 return <SkeletonItem key={id}/>
             case "bag-list":
                 return <SkeletonBagItem key={id}/>
+            case "trader-list":
+                return <SkeletonTrader key={id}/>
             default:
                 return null
         }

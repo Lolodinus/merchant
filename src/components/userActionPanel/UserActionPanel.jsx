@@ -14,6 +14,7 @@ export const UserActionPanel = () => {
         if (money > -100 ) {
             dispatch(gameActions.getNewEvent());
             dispatch(gameActions.nextDay());
+            dispatch({type: "NEW_DAY"});
         }
     }
 

@@ -1,0 +1,77 @@
+@import "../../shareStyle/palette";
+@import "../../shareStyle/block";
+@import "../../shareStyle/btn";
+@import "../../shareStyle/img";
+
+.error {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;    
+
+    .error__container {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        padding: 0 15px;
+
+        display: flex;
+        justify-content: center;
+        
+        .error__wrapper {
+            @include special-accent-block-border-pixel();
+            width: 70%;
+            margin: 0 1rem;
+            flex-direction: row;
+            align-items: stretch;
+
+            .error_banner {
+                width: auto;
+                margin: 0.4rem;
+                padding: 0.5rem;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                flex-basis: 40%;
+
+                font-size: 2rem;
+                box-shadow: -.4rem 0 0 0 $primary-color-text,
+                            .4rem 0 0 0 $primary-color-text,
+                            0 -.4rem 0 0 $primary-color-text,
+                            0 .4rem 0 0 $primary-color-text;
+                span {
+                    background: url("./icon/close-error.svg");
+                    @extend %img-option;
+                    display: block;
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    margin-right: 1rem;                
+                    box-shadow: -.2rem 0 0 0 $primary-color-text,
+                                .2rem 0 0 0 $primary-color-text,
+                                0 -.2rem 0 0 $primary-color-text,
+                                0 .2rem 0 0 $primary-color-text;
+                }
+            }
+            .error__info {   
+                flex-basis: 60%;
+                margin: 0 0.5rem;
+                .error_title {
+                    font-size: 1.5rem;
+                    padding-bottom: 0.5rem;
+                }
+                .error_description {
+                    margin: 0;
+                    padding-bottom: 0.5rem;
+                    font-size: 1rem;
+                    word-break: break-word;
+                }
+                .error_link {
+                    @extend %white-btn;
+                    margin-left: auto;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

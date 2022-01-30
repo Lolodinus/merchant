@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { getRandomBagItemId, getItemsFromFirestore } from "../services/merchant";
 import { gameActions } from "../store/game";
 import { bagActions } from "../store/bag";
 import { arrayNumSum } from "../utils";
+import { links } from "../const/pageLinks"
 
 
 export function useEvent(event) {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { bagItems } = useSelector((store) => store.bag);
 
@@ -55,7 +58,13 @@ export function useEvent(event) {
                 dayEvent(event.day);
             } 
             if (event.hasOwnProperty("bagItem")) {
-                bagItemEvent(event.bagItem, bagItems);
+                
+                bagItemEvent(event.bagItem, bagItems).catch(() => {
+                    navigate(links.error, {state: {
+                        title: "Event Error",
+                        discription: `Во время обработки события "${event.eventName}" произошла ошибка с инвентарём!`, 
+                    }});
+                });
             }
             dispatch(gameActions.eventDone());
         }

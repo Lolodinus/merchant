@@ -13,7 +13,6 @@
     
     font-size: 2rem;
 }
-
 @mixin block-border($first-color, $second-color, $border-size: 0.4rem) {
     @extend %block;
     border: $border-size solid $first-color;
@@ -36,6 +35,12 @@
 
 @mixin accent-block-border-pixel($border-size: .4rem) {
     @include block-border-pixel($accent-color, $primary-color-text, $border-size);
+}
+
+@mixin special-accent-block-border-pixel($border-size: .4rem) {
+    @include block-border-pixel($accent-color, $primary-color-text, $border-size);
+    background-color: $accent-color;
+    color: $primary-color-text;
 }
 
 @mixin dark-primary-block-border($border-size: 0.4rem) {

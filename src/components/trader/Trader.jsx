@@ -15,7 +15,7 @@ export const Trader = ({trader}) => {
             <div 
                 className={ style.traders__avatar }
             >
-                <Link className={ style["traders__avatar-link"] } to={ `${ trader.id }${ links.buy }` } >                    
+                <Link className={ style["traders__avatar-link"] } to={ `${ trader.id }${ links.buy }` } >           
                     <img src={ trader.imgURL } alt={ trader.name } />
                 </Link>
             </div>

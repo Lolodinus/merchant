@@ -20,7 +20,6 @@ export const tradersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 traders: action.payload,
-                // activeTrader: action.payload[0].id,
                 loading: false
             };
         case tradersActionTypes.TRADERS_FAIL:

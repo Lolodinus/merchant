@@ -19,6 +19,13 @@ export const rootReducer = (state, action) => {
     if (action.type === 'GAME_RESET') {
       state = undefined;
     }
+    if (action.type === "NEW_DAY") {
+      state = {
+        ...state,
+        traders: undefined,
+        items: undefined
+      };
+    }
   
     return reducers(state, action)
 }

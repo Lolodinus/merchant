@@ -17,6 +17,7 @@ export const ItemsList = ({items, itemAction, btnName}) => {
         }
         return emptyCell;
     }
+    
     if (!items || items.length < 1) {
         return (
             <div className={`${style["sell__empty-bag"]} ${style["empty-bag"]}`}>

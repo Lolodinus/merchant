@@ -25,4 +25,11 @@
         gap: 1rem;
         background: rgba($primary-color-text, 0.5);
     }
+
+    &.trader-list {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background: rgba($primary-color, .5);
+    }
 }

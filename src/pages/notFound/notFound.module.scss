@@ -1,0 +1,54 @@
+@import "../../shareStyle/img";
+@import "../../shareStyle/block.scss";
+
+
+.not-found {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    .not-found__container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 15px;
+        
+        display: flex;
+        flex-grow: 1;
+        .not-found__row {
+            width: 100%;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 70%;
+                height: 70%;
+                display: block;
+                background-image: url("./img/gate.png");
+                @extend %img-option;
+                opacity: .2;    
+            }
+
+            .not-found__body {
+                width: 50%;
+                @include special-accent-block-border-pixel();
+                flex-direction: column;
+
+                .not-found__title {
+                    font-size: 3rem;
+                }
+                .not-found__discription {
+                    font-size: 1rem;
+                }
+
+            }
+        }
+    }
+}

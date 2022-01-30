@@ -1,13 +1,17 @@
 import { getDoc } from "firebase/firestore";
 
-import { getRandomDocFromFirebaseDB, setRandomFieldOnFirestoreDB, getDocById, transformRef} from "../firebase";
+import { getRandomDocFromFirebaseDB, setRandomFieldOnFirestoreDB, getDocById, transformRef, updateRandomFields} from "../firebase";
 import { getTraderItemsFromFirestore } from "./merchantItems";
+import { randomNumber } from "../../utils";
 
 
 export async function getTradersFromFirestoreDB (quality) {
-    const tradersFromDB = await getRandomDocFromFirebaseDB("traders", quality);
+    const randomFieldNumber = randomNumber(1, 3);
+    const tradersFromDB = await getRandomDocFromFirebaseDB("traders", quality, `random.${randomFieldNumber}`);
     const traders = await _transformTradersData(tradersFromDB);
-    setRandomFieldOnFirestoreDB(traders, "traders");
+    if (updateRandomFields()) {
+        setRandomFieldOnFirestoreDB(traders, "traders");
+    }
     return await transformRef(traders, "category");
 }
 
@@ -33,14 +37,21 @@ export async function setItemsToTraders(count, traders) {
     return items;
 }
 
-export async function getTraderItem(quality, traderCatgoryId, trader) {
-    return getTraderItemsFromFirestore(quality, traderCatgoryId, {trader});
+export function getTraderItem(quality, traderCatgoryId, trader) {
+    try {
+        return getTraderItemsFromFirestore(quality, traderCatgoryId, {trader});
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 export async function getTraderCategoryRefByTraderId(traderId) {
     if (traderId){
         const traderData = await getDocById("traders", traderId);
         const categorySnap = await getDoc(traderData.category);
+        if (!categorySnap.exists()) {
+            throw new Error("Faild get trader category!")
+        }            
         const category = {
             id: categorySnap.id,
             title: categorySnap.data().title,

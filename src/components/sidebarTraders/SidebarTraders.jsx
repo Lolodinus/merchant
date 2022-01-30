@@ -1,22 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 
-import { Trader } from "../../components/trader";
-import { tradersActions } from "../../store/traders";
+import { Trader, SkeletonLoader } from "../../components";
 
 import style from "./sidebarTraders.module.scss";
 
 
 export const SidebarTraders = () => {
-    const dispatch = useDispatch();
-    const { traders } = useSelector((store) => store.traders);
-
-    useEffect(() => {
-        if (traders.length <= 0) {
-            dispatch(tradersActions.fetchTraders(3));
-        }
-        // eslint-disable-next-line
-    }, [])
+    const { traders, loading } = useSelector((store) => store.traders);
 
     return (
         <section className={ style.traders }>
@@ -25,18 +16,22 @@ export const SidebarTraders = () => {
                     <h2 className={ style.traders__header }>
                         Traders
                     </h2>
-                    <div className={ style.traders__list }>
-                        {
-                            traders && traders.length > 0
-                                ? traders.map(trader => {
-                                    return <Trader 
-                                                trader={trader}
-                                                key={trader.id}
-                                            />
-                                })
-                                : null
-                        }
-                    </div>
+                    {
+                        loading
+                            ? <SkeletonLoader quantity={3} type={"trader-list"}/>
+                            : <div className={ style.traders__list }>
+                                {
+                                    traders && traders.length > 0
+                                        ? traders.map(trader => {
+                                            return <Trader 
+                                                        trader={trader}
+                                                        key={trader.id}
+                                                    />
+                                        })
+                                        : null
+                                }
+                            </div>
+                    }
                 </div>
             </div>
         </section>

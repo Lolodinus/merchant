@@ -20,7 +20,10 @@ export const tradersActions = {
             const traders = await getTradersFromFirestoreDB(quality);
             dispatch(tradersActions.tradersSuccess(traders));
         } catch(error) {
-            dispatch(tradersActions.tradersFail(error.message));
+            dispatch(tradersActions.tradersFail({
+                title: error.code,
+                discription: error.message
+            }));
         } 
     },
 }

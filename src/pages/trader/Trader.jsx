@@ -4,7 +4,8 @@ import {
     Routes,
 	Route,
     useParams,
-    Navigate
+    Navigate,
+    useNavigate
   } from "react-router-dom";
 
 import { Buy } from "../buy";
@@ -19,15 +20,24 @@ import style from "./trader.module.scss";
 
 export const Trader = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { traderID } = useParams();
     const { traders } = useSelector((store) => store.traders);
 
     const setActiveTrader = async(traderID) => {
-        const trader = await {
-            id: traderID,
-            category: await getTraderCategoryRefByTraderId(traderID),
+        try {
+            const trader = await {
+                id: traderID,
+                category: await getTraderCategoryRefByTraderId(traderID),
+            }
+            dispatch(tradersActions.setActiveTrader(trader));
+        } catch(error) {
+            // console.log(error.message);
+            navigate(links.error, {state:{
+                title: error.code,
+                discription: error.message,
+            }})
         }
-        dispatch(tradersActions.setActiveTrader(trader));
     }
 
     useEffect(() => {
@@ -45,7 +55,7 @@ export const Trader = () => {
     ) {
         return (
             <Routes>
-                <Route path="*" element={ <Navigate to={ links.news } /> }/>
+                <Route path="*" element={ <Navigate to={ links.trade } /> }/>
             </Routes>
         )
     }
