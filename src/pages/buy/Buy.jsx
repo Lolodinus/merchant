@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { bagActions } from "../../store/bag";
 import { gameActions } from "../../store/game";
 import { ItemsList, SkeletonLoader } from "../../components";
-import { shopItemsActions } from "../../store/shopItems";
 import { links } from "../../const/pageLinks";
 
 import style from "./buy.module.scss";
@@ -18,11 +17,10 @@ export const Buy = () => {
     const { activeTrader } = useSelector((store) => store.traders);
     const { bagItemsCount } = useSelector((store) => store.bag);
     const { money } = useSelector((store) => store.game);
-    const { traders } = useSelector((store) => store.traders);
 
     const addItemToBag = ( item ) => {
-        if (bagItemsCount < 10 && item.price <= money) {
-            dispatch(gameActions.spendMoney(item.price));
+        if (bagItemsCount < 10 && item.newPrice <= money) {
+            dispatch(gameActions.spendMoney(item.newPrice));
             dispatch(bagActions.addItemToBag(item));
         }
     }
@@ -42,23 +40,11 @@ export const Buy = () => {
         return newItems
     }
 
-    
-
-    useEffect(() => {
-        if ( items.length <= 0 && traders && traders.length > 0) {
-            try{
-                dispatch(shopItemsActions.fetchItems(10, traders));
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        // eslint-disable-next-line
-    }, [dispatch, traders])
-
     useEffect(() => {
         if (error && error.message) {
             navigate(links.error, {state:error});
         }
+        // eslint-disable-next-line
     }, [error])
 
     return (

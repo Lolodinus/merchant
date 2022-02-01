@@ -18,7 +18,7 @@ export const Item = ({item, itemAction, btnName}) => {
                                 <img src={item.imgURL} alt={item.title} />
                             </div>
                             <div className={ style.item__price }>
-                                { item.price ? item.price : 0 }
+                                { item.price ? item.newPrice : 0 }
                             </div>
                             { 
                                 item.quantity 

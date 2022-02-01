@@ -11,6 +11,7 @@ import {
 import { Buy } from "../buy";
 import { Sell } from "../sell";
 import { tradersActions } from "../../store/traders";
+import { shopItemsActions } from "../../store/shopItems";
 import { links } from "../../const/pageLinks";
 import { getTraderCategoryRefByTraderId } from "../../services/merchant";
 
@@ -22,6 +23,7 @@ export const Trader = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { traderID } = useParams();
+    const { items } = useSelector((store) => store.items);
     const { traders } = useSelector((store) => store.traders);
 
     const setActiveTrader = async(traderID) => {
@@ -32,7 +34,6 @@ export const Trader = () => {
             }
             dispatch(tradersActions.setActiveTrader(trader));
         } catch(error) {
-            // console.log(error.message);
             navigate(links.error, {state:{
                 title: error.code,
                 discription: error.message,
@@ -46,6 +47,14 @@ export const Trader = () => {
         }
         // eslint-disable-next-line
     }, [traderID])
+
+    
+    useEffect(() => {
+        if ( items.length <= 0 && traders && traders.length > 0) {
+            dispatch(shopItemsActions.fetchItems(10, traders));
+        }
+        // eslint-disable-next-line
+    }, [dispatch, traders])
 
     // trader don't exist => redirect to main page
     if ( 

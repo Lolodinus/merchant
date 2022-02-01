@@ -88,6 +88,11 @@ export const bagReducer = (state = initialState, action) => {
             return {
                 ...state,
                 bagItemsCount: newCount,
+            };            
+        case bagActionTypes.SET_ITEMS_WITH_NEW_PRICE:
+            return {
+                ...state,
+                bagItems: action.payload,
             };
         default:
             return state;

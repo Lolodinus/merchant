@@ -2,13 +2,14 @@ import { doc, getDocs, collection, query, where, orderBy, limit } from "firebase
 
 import { database } from "../../config/firebase";
 import { getRandomDocFromFirebaseDB, setRandomFieldOnFirestoreDB, transformRef, updateRandomFields, checkDocRefExist} from "../firebase";
+import { randomItemPrice } from "./merchantEvent";
 import { randomNumber } from "../../utils";
 
 
 export async function getItemsFromFirestore (quality, ...extraData) {
     const randomFieldNumber = randomNumber(1, 3);
     const itemsFromDB = await getRandomDocFromFirebaseDB("items", quality, `random.${randomFieldNumber}`);
-    const items = await _transformWeaponsData(itemsFromDB, ...extraData);
+    const items = await _transformItemData(itemsFromDB, ...extraData);
     if (updateRandomFields()) {
         setRandomFieldOnFirestoreDB(items, "items");
     }
@@ -18,14 +19,14 @@ export async function getItemsFromFirestore (quality, ...extraData) {
 export async function getTraderItemsFromFirestore (quality, traderCategoryId, ...extraData) {
     const randomFieldNumber = randomNumber(1, 3);
     const itemsFromDB = await getItemByCategory(traderCategoryId, quality, `random.${randomFieldNumber}`);
-    const items = await _transformWeaponsData(itemsFromDB, ...extraData);
+    const items = await _transformItemData(itemsFromDB, ...extraData);
     if (updateRandomFields()) {
         setRandomFieldOnFirestoreDB(items, "items");
     }
     return await transformRef(items, "category");
 }
 
-const _transformWeaponsData = async(data, ...extraData) => {
+const _transformItemData = async(data, ...extraData) => {
     let newData = [];
     data.forEach(item => {
         let transformItem = {
@@ -33,6 +34,7 @@ const _transformWeaponsData = async(data, ...extraData) => {
             title: item.data().title,
             imgURL: item.data().imgURL,
             price: item.data().price,
+            newPrice: randomItemPrice(item.data().price),
             category: item.data().category
         }
         if (extraData) {

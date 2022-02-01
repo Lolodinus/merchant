@@ -34,7 +34,23 @@ export async function setItemsToTraders(count, traders) {
         const firebaseItems = await getTraderItem(count, trader.category.id, trader.id);
         items.push(...firebaseItems);
     }
-    return items;
+    return await setEqualItemPrice(items);
+}
+
+function setEqualItemPrice(traderItems) {
+    const itemsWithEquqlPrice = [];
+    for( let item of traderItems) {
+        const equalItem = traderItems.filter(obj => {
+            return obj.id === item.id ? true : false
+        })
+        if (equalItem.length > 0) {
+            itemsWithEquqlPrice.push({
+                ...item,
+                newPrice: equalItem[0].newPrice
+            })
+        }
+    };
+    return itemsWithEquqlPrice;
 }
 
 export function getTraderItem(quality, traderCatgoryId, trader) {

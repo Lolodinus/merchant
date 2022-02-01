@@ -1,3 +1,6 @@
+import { randomNumber } from "../../utils";
+
+
 const event = [
     {
         eventName: "Обычный день в дороге",
@@ -66,4 +69,10 @@ function normalizeEventData(event) {
         ...(event.bagItem ? {bagItem: {...event.bagItem}} : null),
         ...(event.day ? {day: {...event.day}} : null)
     }
+}
+
+export function randomItemPrice(basePrice) {
+    const minPrise = Math.floor(basePrice * 0.3);
+    const maxPrice = basePrice + minPrise;
+    return  randomNumber(minPrise, maxPrice);
 }

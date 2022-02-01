@@ -17,6 +17,7 @@ export const Error = () => {
         if (!location.state) {            
             navigate(links.main);
         }
+        // eslint-disable-next-line
     }, [])
 
     return (

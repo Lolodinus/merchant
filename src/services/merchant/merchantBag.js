@@ -1,3 +1,6 @@
+import { randomItemPrice } from "./merchantEvent";
+
+
 export async function getRandomBagItemId(bagItems, count) {
     count = Math.abs(count);
     let randomItemId = [];
@@ -26,4 +29,28 @@ export async function getRandomBagItemId(bagItems, count) {
         }
     }
     return randomItemId;
+}
+
+function returnEqualItemFromArr(checkedItem, arrItems) {
+    const equalItem = arrItems.filter(traderItem => traderItem.id === checkedItem.id ? true : false);
+    return equalItem.length > 0 ? equalItem[0] : false;
+}
+
+
+export function setNewPriceForitem(bagItems, traderItems) {
+    const transformBagItems = bagItems.map(item => {
+        const equalTraderItem = returnEqualItemFromArr(item, traderItems);
+        if(equalTraderItem) {
+            return {
+                ...item,
+                newPrice: equalTraderItem.newPrice
+            };
+        } else {
+            return {
+                ...item,
+                newPrice: randomItemPrice(item.price)
+            };
+        }
+    })
+    return transformBagItems;
 }
