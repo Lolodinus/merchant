@@ -33,6 +33,21 @@ a {
 
                     font-size: 1rem;
                     color: $primary-color-text;
+  
+                    &._animate-enter {
+                        color: $accent-color;
+                        .header__days-icon {
+                            background-image: url("./icon/days_active.png");
+                        }
+                    }        
+                    &._animate-enter-active {
+                        .header__days-icon {
+                            transform: scale(1.2);
+                        }
+                    }        
+                    &._animate-enter-done {
+                        color: $primary-color-text;
+                    }
 
                     .header__days-icon {
                         background-image: url("./icon/days_white.png");
@@ -54,6 +69,21 @@ a {
 
                     font-size: 1rem;
                     color: $primary-color-text;
+
+                    &._animate-enter {
+                        color: $accent-color;
+                        .header__money-icon {
+                            background-image: url("./icon/money_active.png");
+                        }
+                    }        
+                    &._animate-enter-active {
+                        .header__money-icon {
+                            transform: scale(1.2);
+                        }
+                    }        
+                    &._animate-enter-done {
+                        color: $primary-color-text;
+                    }
 
                     .header__money-icon {
                         background-image: url("./icon/money_white.png");
@@ -80,6 +110,17 @@ a {
                 .header_logo-link {
                     text-decoration: none;
                     color: inherit;
+                    transition: color 200ms linear;
+
+                    &:hover,
+                    &:focus {
+                        color: $accent-color;
+                        transition: color 200ms linear;
+                    };
+                    &:active {
+                        transform: scale(1.01);
+                        transition: transform 200ms linear;
+                    }
                 }
             };
             .header_right {
@@ -95,14 +136,47 @@ a {
 }
 
 .bag {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
     .bag__link {
-        height: 100%;
+        width: auto;
         display: flex;
         align-items: center;
         justify-content: flex-end;
 
         font-size: 1rem;
         color: $primary-color-text;
+        transition: color 200ms linear;
+
+        &:hover,
+        &:focus {
+            color: $accent-color;
+            transition: color 200ms linear;
+            .bag__icon {
+                background-image: url("./icon/backpack_active.png");
+            }
+        };
+        &:active {
+            transform: scale(1.01);
+            transition: transform 200ms linear;
+        }
+  
+        &._animate-enter {
+            color: $accent-color;
+            .bag__icon {
+                background-image: url("./icon/backpack_active.png");
+            }
+        }        
+        &._animate-enter-active {
+            .bag__icon {
+                transform: scale(1.2);
+            }
+        }        
+        &._animate-enter-done {
+            color: $primary-color-text;
+        }
 
         .bag__icon {
             background-image: url("./icon/backpack_white.png");
@@ -116,3 +190,4 @@ a {
         }
     }
 }
+
