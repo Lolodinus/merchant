@@ -1,0 +1,10 @@
+@import "../../shareStyle/block";
+
+.error-message {
+    @include special-accent-block-border-pixel(0);
+    width: auto;
+    min-height: auto;
+    margin: 0.2rem 0.5rem;
+    padding: 0.2rem;
+    font-size: 0.8rem;
+}

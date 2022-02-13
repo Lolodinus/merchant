@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { CSSTransition } from 'react-transition-group';
 
+import { Menu } from "../";
 import { links } from "../../const/pageLinks";
 import { useAnimate } from "../../hooks"
 
@@ -17,6 +18,9 @@ export const Header = () => {
     const {state: bagState, ref: bagRef, setState: setBagState} = useAnimate(bagItemsCount);
     const {state: dayState, ref: dayRef, setState: setDayState} = useAnimate(day);
     const {state: moneyState, ref: moneyRef, setState: setMoneyState} = useAnimate(money);
+
+    // open menu
+    const [activeMenu, setActiveMenu] = useState(false);
 
     return (
         <header className={ style.header }>
@@ -66,26 +70,34 @@ export const Header = () => {
                         </Link>
                     </div>
                     <div className={ style.header_right }>
-                            <div className={ `${ style.header__bag } ${ style.bag}` } >
-                                <CSSTransition
-                                    in={ bagState } 
-                                    timeout={400}
-                                    nodeRef={bagRef}
-                                    classNames={{
-                                        enter: style["_animate-enter"],
-                                        enterActive: style["_animate-enter-active"],
-                                        enterDone: style["_animate-enter-done"],
-                                    }}
-                                    onEntered={() => {
-                                        setBagState(false);
-                                    }}
-                                >
-                                    <Link className={ style.bag__link } to={ links.bag } ref={bagRef}>
-                                        <span className={ style.bag__icon }/>
-                                        { bagItemsCount }/10
-                                    </Link>
-                                </CSSTransition>
-                            </div>
+                        <div className={ `${ style.header__bag } ${ style.bag}` } >
+                            <CSSTransition
+                                in={ bagState } 
+                                timeout={400}
+                                nodeRef={bagRef}
+                                classNames={{
+                                    enter: style["_animate-enter"],
+                                    enterActive: style["_animate-enter-active"],
+                                    enterDone: style["_animate-enter-done"],
+                                }}
+                                onEntered={() => {
+                                    setBagState(false);
+                                }}
+                            >
+                                <Link className={ style.bag__link } to={ links.bag } ref={bagRef}>
+                                    <span className={ style.bag__icon }/>
+                                    { bagItemsCount }/10
+                                </Link>
+                            </CSSTransition>
+                        </div>
+                        <div className={ style.header__menu }>
+                            <button className={ style["header__menu-btn"] } onClick={() => {setActiveMenu(!activeMenu)}}>
+                                <span className={ style["header__menu-icon"] }/>
+                            </button>
+                        </div>                            
+                        <div className={ style["header__menu-body"] }>
+                            <Menu activeMenu={activeMenu}/>
+                        </div>
                     </div>
                 </div>
             </div>

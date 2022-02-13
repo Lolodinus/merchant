@@ -5,6 +5,7 @@ import { bagReducer as bag} from "./bag";
 import { tradersReducer as traders} from "./traders";
 import { gameReducer as game } from "./game";
 import { newsReducer as news } from "./news";
+import { userReducer as user } from "./user";
 
 
 const reducers = combineReducers({
@@ -13,6 +14,7 @@ const reducers = combineReducers({
     traders,
     game,
     news,
+    user
 })
 
 export const rootReducer = (state, action) => {

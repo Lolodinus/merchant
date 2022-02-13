@@ -8,4 +8,7 @@ export const links = {
     sell: "/sell",
     gameOver: "/game_over",
     error: "/error",
+    autentification: "/autentification",
+    login: "/login",
+    registration: "/registration",
 }

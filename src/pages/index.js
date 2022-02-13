@@ -8,3 +8,5 @@ export { Sell } from "./sell";
 
 export { Error } from "./error";
 export { NotFound } from "./notFound";
+
+export { Authentication, Login, Registration } from "./authentication";

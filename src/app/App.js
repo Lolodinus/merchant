@@ -6,9 +6,25 @@ import {
 	Navigate
   } from "react-router-dom";
 
-import { News, Bag, Trade, Error, NotFound } from "../pages";
-import { Header, Navbar, PopUp, GameOver } from "../components";
-import { useEvent, useNews } from '../hooks';
+import { 
+	News, 
+	Bag, 
+	Trade, 
+	Error, 
+	NotFound, 
+	Authentication 
+} from "../pages";
+import { 
+	Header, 
+	Navbar, 
+	PopUp, 
+	GameOver 
+} from "../components";
+import { 
+	useEvent, 
+	useNews,
+	useAutentification
+} from '../hooks';
 import { links } from "../const/pageLinks";
 import { gameActions } from "../store/game";
 
@@ -22,6 +38,7 @@ export const App = () => {
 	
 	useEvent(event);
     useNews(event);
+	useAutentification();
 
 	useEffect(() => {
         if (!gameOver && money <= -100 ) {
@@ -47,6 +64,7 @@ export const App = () => {
 				<Route path={ `${links.trade}/*` } element={ <Trade/> } />
 				<Route path={ links.bag } exact element={ <Bag/> } />
 				<Route path={ links.error } exact element={ <Error/> } />
+				<Route path={ `${links.autentification}/*` } exact element={ <Authentication/> } />
 				<Route path="*" exact element={ <NotFound/> } />
 			</Routes>
 			<PopUp children={ <GameOver/> } active={ popUpGameOver } />

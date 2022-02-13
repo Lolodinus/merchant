@@ -50,3 +50,9 @@
 @mixin dark-primary-block-border-pixel($border-size: .4rem) {
     @include block-border-pixel($primary-color-dark, $primary-color-text, $border-size);
 }
+
+@mixin special-primary-color-block-border-pixel($border-size: .4rem) {
+    @include block-border-pixel($primary-color, $primary-color-text, $border-size);
+    background-color: $primary-color;
+    color: $primary-color-text;
+}

@@ -1,0 +1,69 @@
+@import "../../../shareStyle/palette";
+@import "../../../shareStyle/block";
+@import "../../../shareStyle/btn";
+
+
+.registration {
+    width: 50%;
+    @include special-primary-color-block-border-pixel;
+    .registration__baner {
+        width: 40%;
+        .registration__baner-img {
+            height: auto;
+            width: 100%;
+        }
+    }
+    .registration__form__wrapper {
+        width: 60%;
+        height: auto;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        .registration__title {
+            margin: 1rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .registration__form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            .registration__input {
+                height: 2rem;
+                margin: 0.5rem 0.5rem;
+                border: none;
+                padding: 0 .5rem;
+                font-family: inherit;
+
+                &.error {
+                    border: 0.2rem solid $accent-color;
+                    color: $accent-color;
+                }
+                &:hover,
+                &:focus {
+                    outline:none;
+                    background-color: $primary-color-light;
+                }
+            }
+            .registration__btn {
+                @extend %accent-btn;
+                margin: 0.5rem;
+                position: relative;
+                &:disabled {
+                    pointer-events: none;
+                    &::after {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        background-color: rgba($primary-text-color, .5);
+                    }
+                }
+            }
+        }
+    }
+}
